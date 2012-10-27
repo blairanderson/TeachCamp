@@ -1,4 +1,6 @@
 Teachcamp::Application.routes.draw do
+  resources :students
+
   resources :schools
 
 
