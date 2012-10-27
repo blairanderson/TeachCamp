@@ -1,4 +1,7 @@
 Teachcamp::Application.routes.draw do
+
+
+
   resources :lessons
 
   resources :attendances
@@ -15,7 +18,7 @@ Teachcamp::Application.routes.draw do
 
   resources :schools
 
-  root :to => 'schools#index'
+
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
@@ -68,7 +71,7 @@ Teachcamp::Application.routes.draw do
   # just remember to delete public/index.html.
 
   # See how all your routes lay out with "rake routes"
-
+  root :to => 'schools#index'
   # This is a legacy wild controller route that's not recommended for RESTful applications.
   # Note: This route will make all actions in every controller accessible via GET requests.
   # match ':controller(/:action(/:id))(.:format)'
