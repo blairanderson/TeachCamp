@@ -7,6 +7,7 @@ gem 'rails', '3.2.8'
 
 gem 'simple_form'
 gem "twitter-bootstrap-rails"
+gem 'bootstrap-sass'
 
 gem 'carrierwave'
 gem "rmagick", '2.13.1', :require => 'RMagick'
@@ -23,6 +24,7 @@ end
 
 gem 'devise'
 gem 'jquery-rails'
+gem 'thin'
 
 group :production do
   gem 'pg'

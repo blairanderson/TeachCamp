@@ -1,8 +1,19 @@
 Teachcamp::Application.routes.draw do
+  resources :lessons
+
+  resources :attendances
+
+  resources :messages
+
+  resources :parents
+
+  resources :classrooms
+
+  devise_for :teachers, path_names: {sign_in: "login", sign_out: "logout"}
+
   resources :students
 
   resources :schools
-
 
   root :to => 'schools#index'
 
