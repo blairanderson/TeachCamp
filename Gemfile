@@ -11,7 +11,6 @@ gem "twitter-bootstrap-rails"
 gem 'carrierwave'
 gem "rmagick", '2.13.1', :require => 'RMagick'
 gem "fog", "~> 1.3.1"
-gem 'sqlite3'
 
 
 # Gems used only for assets and not required
@@ -32,7 +31,6 @@ end
 
 group :development, :test do
 
-  # gem 'sqlite3'
   gem 'quiet_assets'
   gem 'sqlite3'
   gem 'annotate', :git => 'git://github.com/ctran/annotate_models.git'
