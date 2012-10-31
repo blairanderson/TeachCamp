@@ -1,15 +1,35 @@
 <p id="notice"><%= notice %></p>
 
+<h1><%= @classroom.name %></h1>
 <p>
-  <b>Teacher:</b>
-  <%= @classroom.teacher_id %>
+  <b>Teacher:</b><br>
+  <% @classroom.teachers.each do |teacher| %>
+      <%= teacher.email %> <br>
+  <% end %>
 </p>
-
 <p>
   <b>Running date:</b>
   <%= @classroom.running_date %>
 </p>
 
 
-<%= link_to 'Edit', edit_classroom_path(@classroom) %> |
-<%= link_to 'Back', classrooms_path %>
+<h3>Lessons:<%= link_to '(new)', new_classroom_lesson_path(@classroom) %></h3>
+<ol>
+  <%  @classroom.lessons.each do |lesson| %>
+      <li>
+        <b>
+          <%= link_to lesson.name, classroom_lesson_path(@classroom) %>
+        </b>
+        <i>
+          <%= lesson.description %>
+        </i>
+      </li>
+  <% end %>
+</ol>
+
+
+
+
+<%= link_to 'Edit Classroom', edit_classroom_path(@classroom) %> |
+<%= link_to 'Classroom Index', classrooms_path %> |
+

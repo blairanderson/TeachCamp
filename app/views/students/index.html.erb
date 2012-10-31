@@ -1,22 +1,23 @@
 <h1>Listing students</h1>
 
-<table>
+<table class="table table-bordered">
   <tr>
     <th>School</th>
     <th>Name</th>
     <th>Phone</th>
     <th>Email</th>
-    <th></th>
+    <th>Classrooms</th>
     <th></th>
     <th></th>
   </tr>
 
 <% @students.each do |student| %>
   <tr>
-    <td><%= student.school_id %></td>
+    <td><%= student.school.name %></td>
     <td><%= student.name %></td>
     <td><%= student.phone %></td>
     <td><%= student.email %></td>
+    <td><%= student.classrooms.map(&:name).join(",") %></td>
     <td><%= link_to 'Show', student %></td>
     <td><%= link_to 'Edit', edit_student_path(student) %></td>
     <td><%= link_to 'Destroy', student, method: :delete, data: { confirm: 'Are you sure?' } %></td>

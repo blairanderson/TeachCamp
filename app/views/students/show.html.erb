@@ -1,10 +1,13 @@
-<p id="notice"><%= notice %></p>
-
 <p>
   <b>School:</b>
   <%= @student.school_id %>
 </p>
-
+<p>
+  <b>Classes:</b>
+  <% @student.classrooms.each do |classroom| %>
+     <br><%= link_to classroom.name, classroom %>
+  <% end %>
+</p>
 <p>
   <b>Name:</b>
   <%= @student.name %>

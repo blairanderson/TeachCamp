@@ -2,7 +2,7 @@
 
 <p>
   <b>Class:</b>
-  <%= @lesson.class_id %>
+  <%= @classroom.name %>
 </p>
 
 <p>
@@ -21,5 +21,5 @@
 </p>
 
 
-<%= link_to 'Edit', edit_lesson_path(@lesson) %> |
-<%= link_to 'Back', lessons_path %>
+<%= link_to 'Edit', edit_classroom_lesson_path(@classroom) %> |
+<%= link_to 'Back', classroom_lessons_path(@classroom) %>

@@ -2,7 +2,6 @@ Teachcamp::Application.routes.draw do
 
 
 
-  resources :lessons
 
   resources :attendances
 
@@ -10,7 +9,9 @@ Teachcamp::Application.routes.draw do
 
   resources :parents
 
-  resources :classrooms
+  resources :classrooms do
+    resources :lessons
+  end
 
   devise_for :teachers, path_names: {sign_in: "login", sign_out: "logout"}
 

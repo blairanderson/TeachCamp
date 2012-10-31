@@ -1,8 +1,7 @@
-<%= form_for(@classroom) do |f| %>
+<%= simple_form_for(@classroom) do |f| %>
     <% if @classroom.errors.any? %>
         <div id="error_explanation">
           <h2><%= pluralize(@classroom.errors.count, "error") %> prohibited this classroom from being saved:</h2>
-
           <ul>
             <% @classroom.errors.full_messages.each do |msg| %>
                 <li><%= msg %></li>
@@ -11,23 +10,10 @@
         </div>
     <% end %>
 
-    <div class="field">
-      <%= f.label :teacher_id %><br />
-      <%= f.number_field :teacher_id %>
-    </div>
-    <div class="field">
-      <%= f.label :running_date %><br />
-      <%= f.datetime_select :running_date %>
-    </div>
-    <div class="field">
-      <%= f.label :name %><br />
-      <%= f.text_field :name %>
-    </div>
-    <div class="field">
-      <%= f.label :description %><br />
-      <%= f.text_area :description %>
-    </div>
-
+    <%= f.association :teachers, :label_method => :email %>
+    <%= f.input :running_date, as: :string %>
+    <%= f.input :name %>
+    <%= f.input :description, placeholder: "Here is where you put the description of the classroom!" %>
     <div class="actions">
       <%= f.submit %>
     </div>

@@ -12,6 +12,8 @@ gem 'bootstrap-sass'
 gem 'carrierwave'
 gem "rmagick", '2.13.1', :require => 'RMagick'
 gem "fog", "~> 1.3.1"
+gem 'bootstrap-datepicker-rails'
+
 
 
 # Gems used only for assets and not required

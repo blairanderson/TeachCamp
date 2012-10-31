@@ -1,4 +1,4 @@
-<%= form_for(@student) do |f| %>
+<%= simple_form_for(@student) do |f| %>
   <% if @student.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@student.errors.count, "error") %> prohibited this student from being saved:</h2>
@@ -11,22 +11,12 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :school_id %><br />
-    <%= f.number_field :school_id %>
-  </div>
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :phone %><br />
-    <%= f.text_field :phone %>
-  </div>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.text_field :email %>
-  </div>
+
+    <%= f.association :school %>
+    <%= f.association :classrooms %>
+    <%= f.input :name %>
+    <%= f.input :phone %>
+    <%= f.input :email %>
   <div class="actions">
     <%= f.submit %>
   </div>

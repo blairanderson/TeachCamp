@@ -1,14 +1,14 @@
 <h1>Listing lessons</h1>
 
-<table>
+<table class="table table-bordered">
   <tr>
     <th>Class</th>
     <th>Name</th>
     <th>Description</th>
     <th>Date</th>
-    <th></th>
-    <th></th>
-    <th></th>
+    <th>Show</th>
+    <th>Edit</th>
+    <th>Delete</th>
   </tr>
 
 <% @lessons.each do |lesson| %>
@@ -17,7 +17,7 @@
     <td><%= lesson.name %></td>
     <td><%= lesson.description %></td>
     <td><%= lesson.date %></td>
-    <td><%= link_to 'Show', lesson %></td>
+    <td><%= link_to 'Show', classroom_lesson_path(@classroom) %></td>
     <td><%= link_to 'Edit', edit_lesson_path(lesson) %></td>
     <td><%= link_to 'Destroy', lesson, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
@@ -26,4 +26,4 @@
 
 <br />
 
-<%= link_to 'New Lesson', new_lesson_path %>
+<%= link_to 'New Lesson', new_classroom_lesson_path %>

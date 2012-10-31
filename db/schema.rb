@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121027082010) do
+ActiveRecord::Schema.define(:version => 20121031025911) do
 
   create_table "attendances", :force => true do |t|
     t.integer  "student_id"
@@ -19,8 +19,9 @@ ActiveRecord::Schema.define(:version => 20121027082010) do
     t.boolean  "present"
     t.boolean  "tardy"
     t.boolean  "excused"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+    t.integer  "classroom_id"
   end
 
   create_table "classrooms", :force => true do |t|
@@ -30,6 +31,11 @@ ActiveRecord::Schema.define(:version => 20121027082010) do
     t.datetime "updated_at",   :null => false
     t.string   "name"
     t.text     "description"
+  end
+
+  create_table "classrooms_students", :id => false, :force => true do |t|
+    t.integer "classroom_id"
+    t.integer "student_id"
   end
 
   create_table "classrooms_teachers", :id => false, :force => true do |t|
@@ -42,16 +48,19 @@ ActiveRecord::Schema.define(:version => 20121027082010) do
     t.string   "name"
     t.text     "description"
     t.datetime "date"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+    t.integer  "classroom_id"
   end
 
   create_table "messages", :force => true do |t|
     t.integer  "class_id"
     t.integer  "student_id"
     t.text     "message"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+    t.integer  "classroom_id"
+    t.integer  "lesson_id"
   end
 
   create_table "parents", :force => true do |t|
