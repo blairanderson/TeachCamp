@@ -13,7 +13,8 @@ gem 'carrierwave'
 gem "rmagick", '2.13.1', :require => 'RMagick'
 gem "fog", "~> 1.3.1"
 gem 'bootstrap-datepicker-rails'
-
+gem 'devise'
+gem 'jquery-rails'
 
 
 # Gems used only for assets and not required
@@ -24,9 +25,7 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
-gem 'devise'
-gem 'jquery-rails'
-gem 'thin'
+
 
 group :production do
   gem 'pg'
@@ -34,7 +33,7 @@ end
 
 
 group :development, :test do
-
+  gem 'thin'
   gem 'quiet_assets'
   gem 'sqlite3'
   gem 'annotate', :git => 'git://github.com/ctran/annotate_models.git'
