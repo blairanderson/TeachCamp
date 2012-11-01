@@ -13,13 +13,13 @@
 
 <% @lessons.each do |lesson| %>
   <tr>
-    <td><%= lesson.class_id %></td>
+    <td><%= @classroom.name %></td>
     <td><%= lesson.name %></td>
     <td><%= lesson.description %></td>
     <td><%= lesson.date %></td>
-    <td><%= link_to 'Show', classroom_lesson_path(@classroom) %></td>
-    <td><%= link_to 'Edit', edit_lesson_path(lesson) %></td>
-    <td><%= link_to 'Destroy', lesson, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= link_to 'Show', classroom_lesson_path(@classroom.id, lesson.id) %></td>
+    <td><%= link_to 'Edit', edit_classroom_lesson_path(@classroom.id, lesson.id) %></td>
+    <td><%# link_to 'Destroy', lesson, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>
 </table>

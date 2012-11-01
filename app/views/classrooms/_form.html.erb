@@ -10,10 +10,20 @@
         </div>
     <% end %>
 
-    <%= f.association :teachers, :label_method => :email %>
-    <%= f.input :running_date, as: :string %>
-    <%= f.input :name %>
-    <%= f.input :description, placeholder: "Here is where you put the description of the classroom!" %>
+
+
+    <table>
+      <tr>
+        <th>
+          <%= f.input :name %>
+          <br><%= f.association :teachers, :label_method => :email %>
+          <br><%= f.input :running_date, as: :string %>
+        </th>
+        <th>
+          <%= f.input :description, placeholder: "Here is where you put the description of the classroom!" %>
+        </th>
+      </tr>
+    </table>
     <div class="actions">
       <%= f.submit %>
     </div>

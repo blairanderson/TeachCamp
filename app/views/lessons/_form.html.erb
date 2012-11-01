@@ -11,12 +11,14 @@
         </div>
     <% end %>
 
-    <table>
+    <table class="table">
       <tr>
         <th><%= f.input :name %></th>
         <th>
-        <%= f.input :description %><br>
-        <%= f.input :date %>
+          <%= f.input :description %>
+        </th>
+        <th>
+          <%= f.input :date %>
         </th>
       </tr>
     </table>

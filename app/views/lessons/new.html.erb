@@ -1,5 +1,4 @@
-<h1>New lesson</h1>
+<h1><b>New lesson for </b><i><%= @classroom.name %></i></h1>
+<%= link_to "Back", classroom_path(@classroom.id), class: "btn" %>
 
 <%= render 'form' %>
-
-<%= link_to 'Back', lessons_path %>

@@ -1,7 +1,5 @@
 Teachcamp::Application.routes.draw do
-
-
-
+  root :to => "classrooms#index"
 
   resources :attendances
 
@@ -11,6 +9,7 @@ Teachcamp::Application.routes.draw do
 
   resources :classrooms do
     resources :lessons
+    resources :messages
   end
 
   devise_for :teachers, path_names: {sign_in: "login", sign_out: "logout"}
@@ -72,7 +71,6 @@ Teachcamp::Application.routes.draw do
   # just remember to delete public/index.html.
 
   # See how all your routes lay out with "rake routes"
-  root :to => 'students#index'
 
   # This is a legacy wild controller route that's not recommended for RESTful applications.
   # Note: This route will make all actions in every controller accessible via GET requests.
