@@ -38084,3 +38084,800 @@ ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
 
 
   Rendered /Users/blanderson00/.rvm/gems/ruby-1.9.3-p194/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.7ms)
+
+
+Started GET "/classrooms/new" for 127.0.0.1 at 2012-11-01 18:51:39 -0700
+Processing by ClassroomsController#new as HTML
+  [1m[35mTeacher Load (0.1ms)[0m  SELECT "teachers".* FROM "teachers" 
+  Rendered classrooms/_form.html.erb (11407.2ms)
+  Rendered classrooms/new.html.erb within layouts/application (11549.0ms)
+Compiled bootstrap.js  (31ms)  (pid 92178)
+Compiled application.js  (304ms)  (pid 92178)
+  [1m[36mTeacher Load (0.3ms)[0m  [1mSELECT "teachers".* FROM "teachers" WHERE "teachers"."id" = 1 LIMIT 1[0m
+  Rendered layouts/_navigation.html.erb (123.9ms)
+  Rendered layouts/_messages.html.erb (24.4ms)
+Completed 200 OK in 14626ms (Views: 13557.4ms | ActiveRecord: 80.2ms)
+
+
+Started GET "/schools" for 127.0.0.1 at 2012-11-01 18:52:33 -0700
+Processing by SchoolsController#index as HTML
+  [1m[35mSchool Load (0.2ms)[0m  SELECT "schools".* FROM "schools" 
+  Rendered schools/index.html.erb within layouts/application (2.7ms)
+  [1m[36mTeacher Load (0.2ms)[0m  [1mSELECT "teachers".* FROM "teachers" WHERE "teachers"."id" = 1 LIMIT 1[0m
+  Rendered layouts/_navigation.html.erb (3.6ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 104ms (Views: 84.5ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-11-01 18:52:33 -0700
+Processing by ClassroomsController#index as HTML
+  [1m[35mClassroom Load (0.2ms)[0m  SELECT "classrooms".* FROM "classrooms" 
+  [1m[36mTeacher Load (0.3ms)[0m  [1mSELECT "teachers".* FROM "teachers" INNER JOIN "classrooms_teachers" ON "teachers"."id" = "classrooms_teachers"."teacher_id" WHERE "classrooms_teachers"."classroom_id" = 1[0m
+  [1m[35mTeacher Load (0.2ms)[0m  SELECT "teachers".* FROM "teachers" INNER JOIN "classrooms_teachers" ON "teachers"."id" = "classrooms_teachers"."teacher_id" WHERE "classrooms_teachers"."classroom_id" = 3
+  [1m[36mTeacher Load (0.1ms)[0m  [1mSELECT "teachers".* FROM "teachers" INNER JOIN "classrooms_teachers" ON "teachers"."id" = "classrooms_teachers"."teacher_id" WHERE "classrooms_teachers"."classroom_id" = 4[0m
+  Rendered classrooms/index.html.erb within layouts/application (33.3ms)
+  [1m[35mTeacher Load (0.2ms)[0m  SELECT "teachers".* FROM "teachers" WHERE "teachers"."id" = 1 LIMIT 1
+  Rendered layouts/_navigation.html.erb (3.5ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 198ms (Views: 194.7ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-11-01 18:52:34 -0700
+Processing by ClassroomsController#index as HTML
+  [1m[36mClassroom Load (0.2ms)[0m  [1mSELECT "classrooms".* FROM "classrooms" [0m
+  [1m[35mTeacher Load (0.1ms)[0m  SELECT "teachers".* FROM "teachers" INNER JOIN "classrooms_teachers" ON "teachers"."id" = "classrooms_teachers"."teacher_id" WHERE "classrooms_teachers"."classroom_id" = 1
+  [1m[36mTeacher Load (0.1ms)[0m  [1mSELECT "teachers".* FROM "teachers" INNER JOIN "classrooms_teachers" ON "teachers"."id" = "classrooms_teachers"."teacher_id" WHERE "classrooms_teachers"."classroom_id" = 3[0m
+  [1m[35mTeacher Load (0.1ms)[0m  SELECT "teachers".* FROM "teachers" INNER JOIN "classrooms_teachers" ON "teachers"."id" = "classrooms_teachers"."teacher_id" WHERE "classrooms_teachers"."classroom_id" = 4
+  Rendered classrooms/index.html.erb within layouts/application (8.4ms)
+  [1m[36mTeacher Load (0.1ms)[0m  [1mSELECT "teachers".* FROM "teachers" WHERE "teachers"."id" = 1 LIMIT 1[0m
+  Rendered layouts/_navigation.html.erb (2.6ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 34ms (Views: 31.9ms | ActiveRecord: 0.7ms)
+Connecting to database specified by database.yml
+
+
+Started GET "/" for 127.0.0.1 at 2012-11-01 23:17:05 -0700
+Processing by ClassroomsController#index as HTML
+  [1m[36mClassroom Load (0.1ms)[0m  [1mSELECT "classrooms".* FROM "classrooms" [0m
+  [1m[35mTeacher Load (0.2ms)[0m  SELECT "teachers".* FROM "teachers" INNER JOIN "classrooms_teachers" ON "teachers"."id" = "classrooms_teachers"."teacher_id" WHERE "classrooms_teachers"."classroom_id" = 1
+  [1m[36mTeacher Load (0.3ms)[0m  [1mSELECT "teachers".* FROM "teachers" INNER JOIN "classrooms_teachers" ON "teachers"."id" = "classrooms_teachers"."teacher_id" WHERE "classrooms_teachers"."classroom_id" = 3[0m
+  [1m[35mTeacher Load (0.1ms)[0m  SELECT "teachers".* FROM "teachers" INNER JOIN "classrooms_teachers" ON "teachers"."id" = "classrooms_teachers"."teacher_id" WHERE "classrooms_teachers"."classroom_id" = 4
+  Rendered classrooms/index.html.erb within layouts/application (357.7ms)
+  [1m[36mTeacher Load (0.2ms)[0m  [1mSELECT "teachers".* FROM "teachers" WHERE "teachers"."id" = 1 LIMIT 1[0m
+  Rendered layouts/_navigation.html.erb (45.6ms)
+  Rendered layouts/_messages.html.erb (0.6ms)
+Completed 200 OK in 1822ms (Views: 1540.1ms | ActiveRecord: 17.4ms)
+
+ActionController::RoutingError (No route matches [GET] "/assets/css/bootstrap-responsive.css"):
+  actionpack (3.2.8) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  railties (3.2.8) lib/rails/rack/logger.rb:26:in `call_app'
+  railties (3.2.8) lib/rails/rack/logger.rb:16:in `call'
+  quiet_assets (1.0.1) lib/quiet_assets.rb:20:in `call_with_quiet_assets'
+  actionpack (3.2.8) lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  rack (1.4.1) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.4.1) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.2.8) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.4.1) lib/rack/lock.rb:15:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/static.rb:62:in `call'
+  rack-mini-profiler (0.1.22) Ruby/lib/mini_profiler/profiler.rb:187:in `call'
+  railties (3.2.8) lib/rails/engine.rb:479:in `call'
+  railties (3.2.8) lib/rails/application.rb:223:in `call'
+  railties (3.2.8) lib/rails/railtie/configurable.rb:30:in `method_missing'
+  thin (1.5.0) lib/thin/connection.rb:81:in `block in pre_process'
+  thin (1.5.0) lib/thin/connection.rb:79:in `catch'
+  thin (1.5.0) lib/thin/connection.rb:79:in `pre_process'
+  thin (1.5.0) lib/thin/connection.rb:54:in `process'
+  thin (1.5.0) lib/thin/connection.rb:39:in `receive_data'
+  eventmachine (1.0.0) lib/eventmachine.rb:187:in `run_machine'
+  eventmachine (1.0.0) lib/eventmachine.rb:187:in `run'
+  thin (1.5.0) lib/thin/backends/base.rb:63:in `start'
+  thin (1.5.0) lib/thin/server.rb:159:in `start'
+  thin (1.5.0) lib/thin/controllers/controller.rb:86:in `start'
+  thin (1.5.0) lib/thin/runner.rb:187:in `run_command'
+  thin (1.5.0) lib/thin/runner.rb:152:in `run!'
+  thin (1.5.0) bin/thin:6:in `<top (required)>'
+  /Users/blanderson00/.rvm/gems/ruby-1.9.3-p194/bin/thin:19:in `load'
+  /Users/blanderson00/.rvm/gems/ruby-1.9.3-p194/bin/thin:19:in `<main>'
+  /Users/blanderson00/.rvm/gems/ruby-1.9.3-p194/bin/ruby_noexec_wrapper:14:in `eval'
+  /Users/blanderson00/.rvm/gems/ruby-1.9.3-p194/bin/ruby_noexec_wrapper:14:in `<main>'
+
+
+
+
+Started GET "/favicon.ico" for 127.0.0.1 at 2012-11-01 23:17:12 -0700
+
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  actionpack (3.2.8) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  railties (3.2.8) lib/rails/rack/logger.rb:26:in `call_app'
+  railties (3.2.8) lib/rails/rack/logger.rb:16:in `call'
+  quiet_assets (1.0.1) lib/quiet_assets.rb:20:in `call_with_quiet_assets'
+  actionpack (3.2.8) lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  rack (1.4.1) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.4.1) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.2.8) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.4.1) lib/rack/lock.rb:15:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/static.rb:62:in `call'
+  rack-mini-profiler (0.1.22) Ruby/lib/mini_profiler/profiler.rb:286:in `call'
+  railties (3.2.8) lib/rails/engine.rb:479:in `call'
+  railties (3.2.8) lib/rails/application.rb:223:in `call'
+  railties (3.2.8) lib/rails/railtie/configurable.rb:30:in `method_missing'
+  thin (1.5.0) lib/thin/connection.rb:81:in `block in pre_process'
+  thin (1.5.0) lib/thin/connection.rb:79:in `catch'
+  thin (1.5.0) lib/thin/connection.rb:79:in `pre_process'
+  thin (1.5.0) lib/thin/connection.rb:54:in `process'
+  thin (1.5.0) lib/thin/connection.rb:39:in `receive_data'
+  eventmachine (1.0.0) lib/eventmachine.rb:187:in `run_machine'
+  eventmachine (1.0.0) lib/eventmachine.rb:187:in `run'
+  thin (1.5.0) lib/thin/backends/base.rb:63:in `start'
+  thin (1.5.0) lib/thin/server.rb:159:in `start'
+  thin (1.5.0) lib/thin/controllers/controller.rb:86:in `start'
+  thin (1.5.0) lib/thin/runner.rb:187:in `run_command'
+  thin (1.5.0) lib/thin/runner.rb:152:in `run!'
+  thin (1.5.0) bin/thin:6:in `<top (required)>'
+  /Users/blanderson00/.rvm/gems/ruby-1.9.3-p194/bin/thin:19:in `load'
+  /Users/blanderson00/.rvm/gems/ruby-1.9.3-p194/bin/thin:19:in `<main>'
+  /Users/blanderson00/.rvm/gems/ruby-1.9.3-p194/bin/ruby_noexec_wrapper:14:in `eval'
+  /Users/blanderson00/.rvm/gems/ruby-1.9.3-p194/bin/ruby_noexec_wrapper:14:in `<main>'
+
+
+  Rendered /Users/blanderson00/.rvm/gems/ruby-1.9.3-p194/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.6ms)
+
+
+Started GET "/favicon.ico" for 127.0.0.1 at 2012-11-01 23:23:17 -0700
+
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  actionpack (3.2.8) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  railties (3.2.8) lib/rails/rack/logger.rb:26:in `call_app'
+  railties (3.2.8) lib/rails/rack/logger.rb:16:in `call'
+  quiet_assets (1.0.1) lib/quiet_assets.rb:20:in `call_with_quiet_assets'
+  actionpack (3.2.8) lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  rack (1.4.1) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.4.1) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.2.8) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.4.1) lib/rack/lock.rb:15:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/static.rb:62:in `call'
+  rack-mini-profiler (0.1.22) Ruby/lib/mini_profiler/profiler.rb:286:in `call'
+  railties (3.2.8) lib/rails/engine.rb:479:in `call'
+  railties (3.2.8) lib/rails/application.rb:223:in `call'
+  railties (3.2.8) lib/rails/railtie/configurable.rb:30:in `method_missing'
+  thin (1.5.0) lib/thin/connection.rb:81:in `block in pre_process'
+  thin (1.5.0) lib/thin/connection.rb:79:in `catch'
+  thin (1.5.0) lib/thin/connection.rb:79:in `pre_process'
+  thin (1.5.0) lib/thin/connection.rb:54:in `process'
+  thin (1.5.0) lib/thin/connection.rb:39:in `receive_data'
+  eventmachine (1.0.0) lib/eventmachine.rb:187:in `run_machine'
+  eventmachine (1.0.0) lib/eventmachine.rb:187:in `run'
+  thin (1.5.0) lib/thin/backends/base.rb:63:in `start'
+  thin (1.5.0) lib/thin/server.rb:159:in `start'
+  thin (1.5.0) lib/thin/controllers/controller.rb:86:in `start'
+  thin (1.5.0) lib/thin/runner.rb:187:in `run_command'
+  thin (1.5.0) lib/thin/runner.rb:152:in `run!'
+  thin (1.5.0) bin/thin:6:in `<top (required)>'
+  /Users/blanderson00/.rvm/gems/ruby-1.9.3-p194/bin/thin:19:in `load'
+  /Users/blanderson00/.rvm/gems/ruby-1.9.3-p194/bin/thin:19:in `<main>'
+  /Users/blanderson00/.rvm/gems/ruby-1.9.3-p194/bin/ruby_noexec_wrapper:14:in `eval'
+  /Users/blanderson00/.rvm/gems/ruby-1.9.3-p194/bin/ruby_noexec_wrapper:14:in `<main>'
+
+
+  Rendered /Users/blanderson00/.rvm/gems/ruby-1.9.3-p194/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.6ms)
+
+
+Started GET "/classrooms" for 127.0.0.1 at 2012-11-01 23:23:21 -0700
+Processing by ClassroomsController#index as HTML
+  [1m[35mClassroom Load (0.2ms)[0m  SELECT "classrooms".* FROM "classrooms" 
+  [1m[36mTeacher Load (0.2ms)[0m  [1mSELECT "teachers".* FROM "teachers" INNER JOIN "classrooms_teachers" ON "teachers"."id" = "classrooms_teachers"."teacher_id" WHERE "classrooms_teachers"."classroom_id" = 1[0m
+  [1m[35mTeacher Load (0.1ms)[0m  SELECT "teachers".* FROM "teachers" INNER JOIN "classrooms_teachers" ON "teachers"."id" = "classrooms_teachers"."teacher_id" WHERE "classrooms_teachers"."classroom_id" = 3
+  [1m[36mTeacher Load (0.1ms)[0m  [1mSELECT "teachers".* FROM "teachers" INNER JOIN "classrooms_teachers" ON "teachers"."id" = "classrooms_teachers"."teacher_id" WHERE "classrooms_teachers"."classroom_id" = 4[0m
+  Rendered classrooms/index.html.erb within layouts/application (8.6ms)
+  [1m[35mTeacher Load (0.2ms)[0m  SELECT "teachers".* FROM "teachers" WHERE "teachers"."id" = 1 LIMIT 1
+  Rendered layouts/_navigation.html.erb (2.8ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 51ms (Views: 48.6ms | ActiveRecord: 0.7ms)
+
+ActionController::RoutingError (No route matches [GET] "/assets/css/bootstrap-responsive.css"):
+  actionpack (3.2.8) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  railties (3.2.8) lib/rails/rack/logger.rb:26:in `call_app'
+  railties (3.2.8) lib/rails/rack/logger.rb:16:in `call'
+  quiet_assets (1.0.1) lib/quiet_assets.rb:20:in `call_with_quiet_assets'
+  actionpack (3.2.8) lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  rack (1.4.1) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.4.1) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.2.8) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.4.1) lib/rack/lock.rb:15:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/static.rb:62:in `call'
+  rack-mini-profiler (0.1.22) Ruby/lib/mini_profiler/profiler.rb:187:in `call'
+  railties (3.2.8) lib/rails/engine.rb:479:in `call'
+  railties (3.2.8) lib/rails/application.rb:223:in `call'
+  railties (3.2.8) lib/rails/railtie/configurable.rb:30:in `method_missing'
+  thin (1.5.0) lib/thin/connection.rb:81:in `block in pre_process'
+  thin (1.5.0) lib/thin/connection.rb:79:in `catch'
+  thin (1.5.0) lib/thin/connection.rb:79:in `pre_process'
+  thin (1.5.0) lib/thin/connection.rb:54:in `process'
+  thin (1.5.0) lib/thin/connection.rb:39:in `receive_data'
+  eventmachine (1.0.0) lib/eventmachine.rb:187:in `run_machine'
+  eventmachine (1.0.0) lib/eventmachine.rb:187:in `run'
+  thin (1.5.0) lib/thin/backends/base.rb:63:in `start'
+  thin (1.5.0) lib/thin/server.rb:159:in `start'
+  thin (1.5.0) lib/thin/controllers/controller.rb:86:in `start'
+  thin (1.5.0) lib/thin/runner.rb:187:in `run_command'
+  thin (1.5.0) lib/thin/runner.rb:152:in `run!'
+  thin (1.5.0) bin/thin:6:in `<top (required)>'
+  /Users/blanderson00/.rvm/gems/ruby-1.9.3-p194/bin/thin:19:in `load'
+  /Users/blanderson00/.rvm/gems/ruby-1.9.3-p194/bin/thin:19:in `<main>'
+  /Users/blanderson00/.rvm/gems/ruby-1.9.3-p194/bin/ruby_noexec_wrapper:14:in `eval'
+  /Users/blanderson00/.rvm/gems/ruby-1.9.3-p194/bin/ruby_noexec_wrapper:14:in `<main>'
+
+
+
+
+Started GET "/favicon.ico" for 127.0.0.1 at 2012-11-01 23:23:21 -0700
+
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  actionpack (3.2.8) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  railties (3.2.8) lib/rails/rack/logger.rb:26:in `call_app'
+  railties (3.2.8) lib/rails/rack/logger.rb:16:in `call'
+  quiet_assets (1.0.1) lib/quiet_assets.rb:20:in `call_with_quiet_assets'
+  actionpack (3.2.8) lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  rack (1.4.1) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.4.1) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.2.8) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.4.1) lib/rack/lock.rb:15:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/static.rb:62:in `call'
+  rack-mini-profiler (0.1.22) Ruby/lib/mini_profiler/profiler.rb:286:in `call'
+  railties (3.2.8) lib/rails/engine.rb:479:in `call'
+  railties (3.2.8) lib/rails/application.rb:223:in `call'
+  railties (3.2.8) lib/rails/railtie/configurable.rb:30:in `method_missing'
+  thin (1.5.0) lib/thin/connection.rb:81:in `block in pre_process'
+  thin (1.5.0) lib/thin/connection.rb:79:in `catch'
+  thin (1.5.0) lib/thin/connection.rb:79:in `pre_process'
+  thin (1.5.0) lib/thin/connection.rb:54:in `process'
+  thin (1.5.0) lib/thin/connection.rb:39:in `receive_data'
+  eventmachine (1.0.0) lib/eventmachine.rb:187:in `run_machine'
+  eventmachine (1.0.0) lib/eventmachine.rb:187:in `run'
+  thin (1.5.0) lib/thin/backends/base.rb:63:in `start'
+  thin (1.5.0) lib/thin/server.rb:159:in `start'
+  thin (1.5.0) lib/thin/controllers/controller.rb:86:in `start'
+  thin (1.5.0) lib/thin/runner.rb:187:in `run_command'
+  thin (1.5.0) lib/thin/runner.rb:152:in `run!'
+  thin (1.5.0) bin/thin:6:in `<top (required)>'
+  /Users/blanderson00/.rvm/gems/ruby-1.9.3-p194/bin/thin:19:in `load'
+  /Users/blanderson00/.rvm/gems/ruby-1.9.3-p194/bin/thin:19:in `<main>'
+  /Users/blanderson00/.rvm/gems/ruby-1.9.3-p194/bin/ruby_noexec_wrapper:14:in `eval'
+  /Users/blanderson00/.rvm/gems/ruby-1.9.3-p194/bin/ruby_noexec_wrapper:14:in `<main>'
+
+
+  Rendered /Users/blanderson00/.rvm/gems/ruby-1.9.3-p194/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.7ms)
+
+
+Started GET "/schools" for 127.0.0.1 at 2012-11-01 23:23:26 -0700
+Processing by SchoolsController#index as HTML
+  [1m[36mSchool Load (0.1ms)[0m  [1mSELECT "schools".* FROM "schools" [0m
+  Rendered schools/index.html.erb within layouts/application (4.5ms)
+  [1m[35mTeacher Load (0.2ms)[0m  SELECT "teachers".* FROM "teachers" WHERE "teachers"."id" = 1 LIMIT 1
+  Rendered layouts/_navigation.html.erb (3.3ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 83ms (Views: 73.4ms | ActiveRecord: 0.6ms)
+
+ActionController::RoutingError (No route matches [GET] "/assets/css/bootstrap-responsive.css"):
+  actionpack (3.2.8) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  railties (3.2.8) lib/rails/rack/logger.rb:26:in `call_app'
+  railties (3.2.8) lib/rails/rack/logger.rb:16:in `call'
+  quiet_assets (1.0.1) lib/quiet_assets.rb:20:in `call_with_quiet_assets'
+  actionpack (3.2.8) lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  rack (1.4.1) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.4.1) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.2.8) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.4.1) lib/rack/lock.rb:15:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/static.rb:62:in `call'
+  rack-mini-profiler (0.1.22) Ruby/lib/mini_profiler/profiler.rb:187:in `call'
+  railties (3.2.8) lib/rails/engine.rb:479:in `call'
+  railties (3.2.8) lib/rails/application.rb:223:in `call'
+  railties (3.2.8) lib/rails/railtie/configurable.rb:30:in `method_missing'
+  thin (1.5.0) lib/thin/connection.rb:81:in `block in pre_process'
+  thin (1.5.0) lib/thin/connection.rb:79:in `catch'
+  thin (1.5.0) lib/thin/connection.rb:79:in `pre_process'
+  thin (1.5.0) lib/thin/connection.rb:54:in `process'
+  thin (1.5.0) lib/thin/connection.rb:39:in `receive_data'
+  eventmachine (1.0.0) lib/eventmachine.rb:187:in `run_machine'
+  eventmachine (1.0.0) lib/eventmachine.rb:187:in `run'
+  thin (1.5.0) lib/thin/backends/base.rb:63:in `start'
+  thin (1.5.0) lib/thin/server.rb:159:in `start'
+  thin (1.5.0) lib/thin/controllers/controller.rb:86:in `start'
+  thin (1.5.0) lib/thin/runner.rb:187:in `run_command'
+  thin (1.5.0) lib/thin/runner.rb:152:in `run!'
+  thin (1.5.0) bin/thin:6:in `<top (required)>'
+  /Users/blanderson00/.rvm/gems/ruby-1.9.3-p194/bin/thin:19:in `load'
+  /Users/blanderson00/.rvm/gems/ruby-1.9.3-p194/bin/thin:19:in `<main>'
+  /Users/blanderson00/.rvm/gems/ruby-1.9.3-p194/bin/ruby_noexec_wrapper:14:in `eval'
+  /Users/blanderson00/.rvm/gems/ruby-1.9.3-p194/bin/ruby_noexec_wrapper:14:in `<main>'
+
+
+
+
+Started GET "/favicon.ico" for 127.0.0.1 at 2012-11-01 23:23:26 -0700
+
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  actionpack (3.2.8) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  railties (3.2.8) lib/rails/rack/logger.rb:26:in `call_app'
+  railties (3.2.8) lib/rails/rack/logger.rb:16:in `call'
+  quiet_assets (1.0.1) lib/quiet_assets.rb:20:in `call_with_quiet_assets'
+  actionpack (3.2.8) lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  rack (1.4.1) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.4.1) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.2.8) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.4.1) lib/rack/lock.rb:15:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/static.rb:62:in `call'
+  rack-mini-profiler (0.1.22) Ruby/lib/mini_profiler/profiler.rb:286:in `call'
+  railties (3.2.8) lib/rails/engine.rb:479:in `call'
+  railties (3.2.8) lib/rails/application.rb:223:in `call'
+  railties (3.2.8) lib/rails/railtie/configurable.rb:30:in `method_missing'
+  thin (1.5.0) lib/thin/connection.rb:81:in `block in pre_process'
+  thin (1.5.0) lib/thin/connection.rb:79:in `catch'
+  thin (1.5.0) lib/thin/connection.rb:79:in `pre_process'
+  thin (1.5.0) lib/thin/connection.rb:54:in `process'
+  thin (1.5.0) lib/thin/connection.rb:39:in `receive_data'
+  eventmachine (1.0.0) lib/eventmachine.rb:187:in `run_machine'
+  eventmachine (1.0.0) lib/eventmachine.rb:187:in `run'
+  thin (1.5.0) lib/thin/backends/base.rb:63:in `start'
+  thin (1.5.0) lib/thin/server.rb:159:in `start'
+  thin (1.5.0) lib/thin/controllers/controller.rb:86:in `start'
+  thin (1.5.0) lib/thin/runner.rb:187:in `run_command'
+  thin (1.5.0) lib/thin/runner.rb:152:in `run!'
+  thin (1.5.0) bin/thin:6:in `<top (required)>'
+  /Users/blanderson00/.rvm/gems/ruby-1.9.3-p194/bin/thin:19:in `load'
+  /Users/blanderson00/.rvm/gems/ruby-1.9.3-p194/bin/thin:19:in `<main>'
+  /Users/blanderson00/.rvm/gems/ruby-1.9.3-p194/bin/ruby_noexec_wrapper:14:in `eval'
+  /Users/blanderson00/.rvm/gems/ruby-1.9.3-p194/bin/ruby_noexec_wrapper:14:in `<main>'
+
+
+  Rendered /Users/blanderson00/.rvm/gems/ruby-1.9.3-p194/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.9ms)
+
+
+Started GET "/classrooms" for 127.0.0.1 at 2012-11-01 23:23:27 -0700
+Processing by ClassroomsController#index as HTML
+  [1m[36mClassroom Load (0.2ms)[0m  [1mSELECT "classrooms".* FROM "classrooms" [0m
+  [1m[35mTeacher Load (0.1ms)[0m  SELECT "teachers".* FROM "teachers" INNER JOIN "classrooms_teachers" ON "teachers"."id" = "classrooms_teachers"."teacher_id" WHERE "classrooms_teachers"."classroom_id" = 1
+  [1m[36mTeacher Load (0.1ms)[0m  [1mSELECT "teachers".* FROM "teachers" INNER JOIN "classrooms_teachers" ON "teachers"."id" = "classrooms_teachers"."teacher_id" WHERE "classrooms_teachers"."classroom_id" = 3[0m
+  [1m[35mTeacher Load (0.1ms)[0m  SELECT "teachers".* FROM "teachers" INNER JOIN "classrooms_teachers" ON "teachers"."id" = "classrooms_teachers"."teacher_id" WHERE "classrooms_teachers"."classroom_id" = 4
+  Rendered classrooms/index.html.erb within layouts/application (8.1ms)
+  [1m[36mTeacher Load (0.2ms)[0m  [1mSELECT "teachers".* FROM "teachers" WHERE "teachers"."id" = 1 LIMIT 1[0m
+  Rendered layouts/_navigation.html.erb (3.4ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 79ms (Views: 75.8ms | ActiveRecord: 0.8ms)
+
+ActionController::RoutingError (No route matches [GET] "/assets/css/bootstrap-responsive.css"):
+  actionpack (3.2.8) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  railties (3.2.8) lib/rails/rack/logger.rb:26:in `call_app'
+  railties (3.2.8) lib/rails/rack/logger.rb:16:in `call'
+  quiet_assets (1.0.1) lib/quiet_assets.rb:20:in `call_with_quiet_assets'
+  actionpack (3.2.8) lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  rack (1.4.1) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.4.1) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.2.8) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.4.1) lib/rack/lock.rb:15:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/static.rb:62:in `call'
+  rack-mini-profiler (0.1.22) Ruby/lib/mini_profiler/profiler.rb:187:in `call'
+  railties (3.2.8) lib/rails/engine.rb:479:in `call'
+  railties (3.2.8) lib/rails/application.rb:223:in `call'
+  railties (3.2.8) lib/rails/railtie/configurable.rb:30:in `method_missing'
+  thin (1.5.0) lib/thin/connection.rb:81:in `block in pre_process'
+  thin (1.5.0) lib/thin/connection.rb:79:in `catch'
+  thin (1.5.0) lib/thin/connection.rb:79:in `pre_process'
+  thin (1.5.0) lib/thin/connection.rb:54:in `process'
+  thin (1.5.0) lib/thin/connection.rb:39:in `receive_data'
+  eventmachine (1.0.0) lib/eventmachine.rb:187:in `run_machine'
+  eventmachine (1.0.0) lib/eventmachine.rb:187:in `run'
+  thin (1.5.0) lib/thin/backends/base.rb:63:in `start'
+  thin (1.5.0) lib/thin/server.rb:159:in `start'
+  thin (1.5.0) lib/thin/controllers/controller.rb:86:in `start'
+  thin (1.5.0) lib/thin/runner.rb:187:in `run_command'
+  thin (1.5.0) lib/thin/runner.rb:152:in `run!'
+  thin (1.5.0) bin/thin:6:in `<top (required)>'
+  /Users/blanderson00/.rvm/gems/ruby-1.9.3-p194/bin/thin:19:in `load'
+  /Users/blanderson00/.rvm/gems/ruby-1.9.3-p194/bin/thin:19:in `<main>'
+  /Users/blanderson00/.rvm/gems/ruby-1.9.3-p194/bin/ruby_noexec_wrapper:14:in `eval'
+  /Users/blanderson00/.rvm/gems/ruby-1.9.3-p194/bin/ruby_noexec_wrapper:14:in `<main>'
+
+
+
+
+Started GET "/favicon.ico" for 127.0.0.1 at 2012-11-01 23:23:28 -0700
+
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  actionpack (3.2.8) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  railties (3.2.8) lib/rails/rack/logger.rb:26:in `call_app'
+  railties (3.2.8) lib/rails/rack/logger.rb:16:in `call'
+  quiet_assets (1.0.1) lib/quiet_assets.rb:20:in `call_with_quiet_assets'
+  actionpack (3.2.8) lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  rack (1.4.1) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.4.1) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.2.8) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.4.1) lib/rack/lock.rb:15:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/static.rb:62:in `call'
+  rack-mini-profiler (0.1.22) Ruby/lib/mini_profiler/profiler.rb:286:in `call'
+  railties (3.2.8) lib/rails/engine.rb:479:in `call'
+  railties (3.2.8) lib/rails/application.rb:223:in `call'
+  railties (3.2.8) lib/rails/railtie/configurable.rb:30:in `method_missing'
+  thin (1.5.0) lib/thin/connection.rb:81:in `block in pre_process'
+  thin (1.5.0) lib/thin/connection.rb:79:in `catch'
+  thin (1.5.0) lib/thin/connection.rb:79:in `pre_process'
+  thin (1.5.0) lib/thin/connection.rb:54:in `process'
+  thin (1.5.0) lib/thin/connection.rb:39:in `receive_data'
+  eventmachine (1.0.0) lib/eventmachine.rb:187:in `run_machine'
+  eventmachine (1.0.0) lib/eventmachine.rb:187:in `run'
+  thin (1.5.0) lib/thin/backends/base.rb:63:in `start'
+  thin (1.5.0) lib/thin/server.rb:159:in `start'
+  thin (1.5.0) lib/thin/controllers/controller.rb:86:in `start'
+  thin (1.5.0) lib/thin/runner.rb:187:in `run_command'
+  thin (1.5.0) lib/thin/runner.rb:152:in `run!'
+  thin (1.5.0) bin/thin:6:in `<top (required)>'
+  /Users/blanderson00/.rvm/gems/ruby-1.9.3-p194/bin/thin:19:in `load'
+  /Users/blanderson00/.rvm/gems/ruby-1.9.3-p194/bin/thin:19:in `<main>'
+  /Users/blanderson00/.rvm/gems/ruby-1.9.3-p194/bin/ruby_noexec_wrapper:14:in `eval'
+  /Users/blanderson00/.rvm/gems/ruby-1.9.3-p194/bin/ruby_noexec_wrapper:14:in `<main>'
+
+
+  Rendered /Users/blanderson00/.rvm/gems/ruby-1.9.3-p194/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.6ms)
+
+
+Started GET "/students" for 127.0.0.1 at 2012-11-01 23:23:28 -0700
+Processing by StudentsController#index as HTML
+  [1m[35mStudent Load (15.8ms)[0m  SELECT "students".* FROM "students" 
+  [1m[36mSchool Load (0.2ms)[0m  [1mSELECT "schools".* FROM "schools" WHERE "schools"."id" = 1 LIMIT 1[0m
+  [1m[35mClassroom Load (0.7ms)[0m  SELECT "classrooms".* FROM "classrooms" INNER JOIN "classrooms_students" ON "classrooms"."id" = "classrooms_students"."classroom_id" WHERE "classrooms_students"."student_id" = 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "schools".* FROM "schools" WHERE "schools"."id" = 1 LIMIT 1[0m
+  [1m[35mClassroom Load (0.1ms)[0m  SELECT "classrooms".* FROM "classrooms" INNER JOIN "classrooms_students" ON "classrooms"."id" = "classrooms_students"."classroom_id" WHERE "classrooms_students"."student_id" = 2
+  Rendered students/index.html.erb within layouts/application (69.9ms)
+  [1m[36mTeacher Load (0.2ms)[0m  [1mSELECT "teachers".* FROM "teachers" WHERE "teachers"."id" = 1 LIMIT 1[0m
+  Rendered layouts/_navigation.html.erb (3.0ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 172ms (Views: 145.7ms | ActiveRecord: 17.3ms)
+
+ActionController::RoutingError (No route matches [GET] "/assets/css/bootstrap-responsive.css"):
+  actionpack (3.2.8) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  railties (3.2.8) lib/rails/rack/logger.rb:26:in `call_app'
+  railties (3.2.8) lib/rails/rack/logger.rb:16:in `call'
+  quiet_assets (1.0.1) lib/quiet_assets.rb:20:in `call_with_quiet_assets'
+  actionpack (3.2.8) lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  rack (1.4.1) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.4.1) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.2.8) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.4.1) lib/rack/lock.rb:15:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/static.rb:62:in `call'
+  rack-mini-profiler (0.1.22) Ruby/lib/mini_profiler/profiler.rb:187:in `call'
+  railties (3.2.8) lib/rails/engine.rb:479:in `call'
+  railties (3.2.8) lib/rails/application.rb:223:in `call'
+  railties (3.2.8) lib/rails/railtie/configurable.rb:30:in `method_missing'
+  thin (1.5.0) lib/thin/connection.rb:81:in `block in pre_process'
+  thin (1.5.0) lib/thin/connection.rb:79:in `catch'
+  thin (1.5.0) lib/thin/connection.rb:79:in `pre_process'
+  thin (1.5.0) lib/thin/connection.rb:54:in `process'
+  thin (1.5.0) lib/thin/connection.rb:39:in `receive_data'
+  eventmachine (1.0.0) lib/eventmachine.rb:187:in `run_machine'
+  eventmachine (1.0.0) lib/eventmachine.rb:187:in `run'
+  thin (1.5.0) lib/thin/backends/base.rb:63:in `start'
+  thin (1.5.0) lib/thin/server.rb:159:in `start'
+  thin (1.5.0) lib/thin/controllers/controller.rb:86:in `start'
+  thin (1.5.0) lib/thin/runner.rb:187:in `run_command'
+  thin (1.5.0) lib/thin/runner.rb:152:in `run!'
+  thin (1.5.0) bin/thin:6:in `<top (required)>'
+  /Users/blanderson00/.rvm/gems/ruby-1.9.3-p194/bin/thin:19:in `load'
+  /Users/blanderson00/.rvm/gems/ruby-1.9.3-p194/bin/thin:19:in `<main>'
+  /Users/blanderson00/.rvm/gems/ruby-1.9.3-p194/bin/ruby_noexec_wrapper:14:in `eval'
+  /Users/blanderson00/.rvm/gems/ruby-1.9.3-p194/bin/ruby_noexec_wrapper:14:in `<main>'
+
+
+
+
+Started GET "/favicon.ico" for 127.0.0.1 at 2012-11-01 23:23:29 -0700
+
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  actionpack (3.2.8) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  railties (3.2.8) lib/rails/rack/logger.rb:26:in `call_app'
+  railties (3.2.8) lib/rails/rack/logger.rb:16:in `call'
+  quiet_assets (1.0.1) lib/quiet_assets.rb:20:in `call_with_quiet_assets'
+  actionpack (3.2.8) lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  rack (1.4.1) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.4.1) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.2.8) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.4.1) lib/rack/lock.rb:15:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/static.rb:62:in `call'
+  rack-mini-profiler (0.1.22) Ruby/lib/mini_profiler/profiler.rb:286:in `call'
+  railties (3.2.8) lib/rails/engine.rb:479:in `call'
+  railties (3.2.8) lib/rails/application.rb:223:in `call'
+  railties (3.2.8) lib/rails/railtie/configurable.rb:30:in `method_missing'
+  thin (1.5.0) lib/thin/connection.rb:81:in `block in pre_process'
+  thin (1.5.0) lib/thin/connection.rb:79:in `catch'
+  thin (1.5.0) lib/thin/connection.rb:79:in `pre_process'
+  thin (1.5.0) lib/thin/connection.rb:54:in `process'
+  thin (1.5.0) lib/thin/connection.rb:39:in `receive_data'
+  eventmachine (1.0.0) lib/eventmachine.rb:187:in `run_machine'
+  eventmachine (1.0.0) lib/eventmachine.rb:187:in `run'
+  thin (1.5.0) lib/thin/backends/base.rb:63:in `start'
+  thin (1.5.0) lib/thin/server.rb:159:in `start'
+  thin (1.5.0) lib/thin/controllers/controller.rb:86:in `start'
+  thin (1.5.0) lib/thin/runner.rb:187:in `run_command'
+  thin (1.5.0) lib/thin/runner.rb:152:in `run!'
+  thin (1.5.0) bin/thin:6:in `<top (required)>'
+  /Users/blanderson00/.rvm/gems/ruby-1.9.3-p194/bin/thin:19:in `load'
+  /Users/blanderson00/.rvm/gems/ruby-1.9.3-p194/bin/thin:19:in `<main>'
+  /Users/blanderson00/.rvm/gems/ruby-1.9.3-p194/bin/ruby_noexec_wrapper:14:in `eval'
+  /Users/blanderson00/.rvm/gems/ruby-1.9.3-p194/bin/ruby_noexec_wrapper:14:in `<main>'
+
+
+  Rendered /Users/blanderson00/.rvm/gems/ruby-1.9.3-p194/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.7ms)
+
+
+Started GET "/classrooms" for 127.0.0.1 at 2012-11-01 23:23:30 -0700
+Processing by ClassroomsController#index as HTML
+  [1m[35mClassroom Load (0.2ms)[0m  SELECT "classrooms".* FROM "classrooms" 
+  [1m[36mTeacher Load (0.2ms)[0m  [1mSELECT "teachers".* FROM "teachers" INNER JOIN "classrooms_teachers" ON "teachers"."id" = "classrooms_teachers"."teacher_id" WHERE "classrooms_teachers"."classroom_id" = 1[0m
+  [1m[35mTeacher Load (0.1ms)[0m  SELECT "teachers".* FROM "teachers" INNER JOIN "classrooms_teachers" ON "teachers"."id" = "classrooms_teachers"."teacher_id" WHERE "classrooms_teachers"."classroom_id" = 3
+  [1m[36mTeacher Load (0.1ms)[0m  [1mSELECT "teachers".* FROM "teachers" INNER JOIN "classrooms_teachers" ON "teachers"."id" = "classrooms_teachers"."teacher_id" WHERE "classrooms_teachers"."classroom_id" = 4[0m
+  Rendered classrooms/index.html.erb within layouts/application (9.3ms)
+  [1m[35mTeacher Load (0.3ms)[0m  SELECT "teachers".* FROM "teachers" WHERE "teachers"."id" = 1 LIMIT 1
+  Rendered layouts/_navigation.html.erb (48.2ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 151ms (Views: 148.2ms | ActiveRecord: 1.0ms)
+
+ActionController::RoutingError (No route matches [GET] "/assets/css/bootstrap-responsive.css"):
+  actionpack (3.2.8) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  railties (3.2.8) lib/rails/rack/logger.rb:26:in `call_app'
+  railties (3.2.8) lib/rails/rack/logger.rb:16:in `call'
+  quiet_assets (1.0.1) lib/quiet_assets.rb:20:in `call_with_quiet_assets'
+  actionpack (3.2.8) lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  rack (1.4.1) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.4.1) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.2.8) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.4.1) lib/rack/lock.rb:15:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/static.rb:62:in `call'
+  rack-mini-profiler (0.1.22) Ruby/lib/mini_profiler/profiler.rb:187:in `call'
+  railties (3.2.8) lib/rails/engine.rb:479:in `call'
+  railties (3.2.8) lib/rails/application.rb:223:in `call'
+  railties (3.2.8) lib/rails/railtie/configurable.rb:30:in `method_missing'
+  thin (1.5.0) lib/thin/connection.rb:81:in `block in pre_process'
+  thin (1.5.0) lib/thin/connection.rb:79:in `catch'
+  thin (1.5.0) lib/thin/connection.rb:79:in `pre_process'
+  thin (1.5.0) lib/thin/connection.rb:54:in `process'
+  thin (1.5.0) lib/thin/connection.rb:39:in `receive_data'
+  eventmachine (1.0.0) lib/eventmachine.rb:187:in `run_machine'
+  eventmachine (1.0.0) lib/eventmachine.rb:187:in `run'
+  thin (1.5.0) lib/thin/backends/base.rb:63:in `start'
+  thin (1.5.0) lib/thin/server.rb:159:in `start'
+  thin (1.5.0) lib/thin/controllers/controller.rb:86:in `start'
+  thin (1.5.0) lib/thin/runner.rb:187:in `run_command'
+  thin (1.5.0) lib/thin/runner.rb:152:in `run!'
+  thin (1.5.0) bin/thin:6:in `<top (required)>'
+  /Users/blanderson00/.rvm/gems/ruby-1.9.3-p194/bin/thin:19:in `load'
+  /Users/blanderson00/.rvm/gems/ruby-1.9.3-p194/bin/thin:19:in `<main>'
+  /Users/blanderson00/.rvm/gems/ruby-1.9.3-p194/bin/ruby_noexec_wrapper:14:in `eval'
+  /Users/blanderson00/.rvm/gems/ruby-1.9.3-p194/bin/ruby_noexec_wrapper:14:in `<main>'
+
+
+
+
+Started GET "/favicon.ico" for 127.0.0.1 at 2012-11-01 23:23:31 -0700
+
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  actionpack (3.2.8) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  railties (3.2.8) lib/rails/rack/logger.rb:26:in `call_app'
+  railties (3.2.8) lib/rails/rack/logger.rb:16:in `call'
+  quiet_assets (1.0.1) lib/quiet_assets.rb:20:in `call_with_quiet_assets'
+  actionpack (3.2.8) lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  rack (1.4.1) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.4.1) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.2.8) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.4.1) lib/rack/lock.rb:15:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/static.rb:62:in `call'
+  rack-mini-profiler (0.1.22) Ruby/lib/mini_profiler/profiler.rb:286:in `call'
+  railties (3.2.8) lib/rails/engine.rb:479:in `call'
+  railties (3.2.8) lib/rails/application.rb:223:in `call'
+  railties (3.2.8) lib/rails/railtie/configurable.rb:30:in `method_missing'
+  thin (1.5.0) lib/thin/connection.rb:81:in `block in pre_process'
+  thin (1.5.0) lib/thin/connection.rb:79:in `catch'
+  thin (1.5.0) lib/thin/connection.rb:79:in `pre_process'
+  thin (1.5.0) lib/thin/connection.rb:54:in `process'
+  thin (1.5.0) lib/thin/connection.rb:39:in `receive_data'
+  eventmachine (1.0.0) lib/eventmachine.rb:187:in `run_machine'
+  eventmachine (1.0.0) lib/eventmachine.rb:187:in `run'
+  thin (1.5.0) lib/thin/backends/base.rb:63:in `start'
+  thin (1.5.0) lib/thin/server.rb:159:in `start'
+  thin (1.5.0) lib/thin/controllers/controller.rb:86:in `start'
+  thin (1.5.0) lib/thin/runner.rb:187:in `run_command'
+  thin (1.5.0) lib/thin/runner.rb:152:in `run!'
+  thin (1.5.0) bin/thin:6:in `<top (required)>'
+  /Users/blanderson00/.rvm/gems/ruby-1.9.3-p194/bin/thin:19:in `load'
+  /Users/blanderson00/.rvm/gems/ruby-1.9.3-p194/bin/thin:19:in `<main>'
+  /Users/blanderson00/.rvm/gems/ruby-1.9.3-p194/bin/ruby_noexec_wrapper:14:in `eval'
+  /Users/blanderson00/.rvm/gems/ruby-1.9.3-p194/bin/ruby_noexec_wrapper:14:in `<main>'
+
+
+  Rendered /Users/blanderson00/.rvm/gems/ruby-1.9.3-p194/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.6ms)
+
+
+Started GET "/schools" for 127.0.0.1 at 2012-11-01 23:23:33 -0700
+Processing by SchoolsController#index as HTML
+  [1m[36mSchool Load (0.1ms)[0m  [1mSELECT "schools".* FROM "schools" [0m
+  Rendered schools/index.html.erb within layouts/application (1.7ms)
+  [1m[35mTeacher Load (0.2ms)[0m  SELECT "teachers".* FROM "teachers" WHERE "teachers"."id" = 1 LIMIT 1
+  Rendered layouts/_navigation.html.erb (2.9ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 28ms (Views: 26.1ms | ActiveRecord: 0.3ms)
+
+ActionController::RoutingError (No route matches [GET] "/assets/css/bootstrap-responsive.css"):
+  actionpack (3.2.8) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  railties (3.2.8) lib/rails/rack/logger.rb:26:in `call_app'
+  railties (3.2.8) lib/rails/rack/logger.rb:16:in `call'
+  quiet_assets (1.0.1) lib/quiet_assets.rb:20:in `call_with_quiet_assets'
+  actionpack (3.2.8) lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  rack (1.4.1) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.4.1) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.2.8) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.4.1) lib/rack/lock.rb:15:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/static.rb:62:in `call'
+  rack-mini-profiler (0.1.22) Ruby/lib/mini_profiler/profiler.rb:187:in `call'
+  railties (3.2.8) lib/rails/engine.rb:479:in `call'
+  railties (3.2.8) lib/rails/application.rb:223:in `call'
+  railties (3.2.8) lib/rails/railtie/configurable.rb:30:in `method_missing'
+  thin (1.5.0) lib/thin/connection.rb:81:in `block in pre_process'
+  thin (1.5.0) lib/thin/connection.rb:79:in `catch'
+  thin (1.5.0) lib/thin/connection.rb:79:in `pre_process'
+  thin (1.5.0) lib/thin/connection.rb:54:in `process'
+  thin (1.5.0) lib/thin/connection.rb:39:in `receive_data'
+  eventmachine (1.0.0) lib/eventmachine.rb:187:in `run_machine'
+  eventmachine (1.0.0) lib/eventmachine.rb:187:in `run'
+  thin (1.5.0) lib/thin/backends/base.rb:63:in `start'
+  thin (1.5.0) lib/thin/server.rb:159:in `start'
+  thin (1.5.0) lib/thin/controllers/controller.rb:86:in `start'
+  thin (1.5.0) lib/thin/runner.rb:187:in `run_command'
+  thin (1.5.0) lib/thin/runner.rb:152:in `run!'
+  thin (1.5.0) bin/thin:6:in `<top (required)>'
+  /Users/blanderson00/.rvm/gems/ruby-1.9.3-p194/bin/thin:19:in `load'
+  /Users/blanderson00/.rvm/gems/ruby-1.9.3-p194/bin/thin:19:in `<main>'
+  /Users/blanderson00/.rvm/gems/ruby-1.9.3-p194/bin/ruby_noexec_wrapper:14:in `eval'
+  /Users/blanderson00/.rvm/gems/ruby-1.9.3-p194/bin/ruby_noexec_wrapper:14:in `<main>'
+
+
+
+
+Started GET "/favicon.ico" for 127.0.0.1 at 2012-11-01 23:23:33 -0700
+
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  actionpack (3.2.8) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  railties (3.2.8) lib/rails/rack/logger.rb:26:in `call_app'
+  railties (3.2.8) lib/rails/rack/logger.rb:16:in `call'
+  quiet_assets (1.0.1) lib/quiet_assets.rb:20:in `call_with_quiet_assets'
+  actionpack (3.2.8) lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  rack (1.4.1) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.4.1) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.2.8) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.4.1) lib/rack/lock.rb:15:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/static.rb:62:in `call'
+  rack-mini-profiler (0.1.22) Ruby/lib/mini_profiler/profiler.rb:286:in `call'
+  railties (3.2.8) lib/rails/engine.rb:479:in `call'
+  railties (3.2.8) lib/rails/application.rb:223:in `call'
+  railties (3.2.8) lib/rails/railtie/configurable.rb:30:in `method_missing'
+  thin (1.5.0) lib/thin/connection.rb:81:in `block in pre_process'
+  thin (1.5.0) lib/thin/connection.rb:79:in `catch'
+  thin (1.5.0) lib/thin/connection.rb:79:in `pre_process'
+  thin (1.5.0) lib/thin/connection.rb:54:in `process'
+  thin (1.5.0) lib/thin/connection.rb:39:in `receive_data'
+  eventmachine (1.0.0) lib/eventmachine.rb:187:in `run_machine'
+  eventmachine (1.0.0) lib/eventmachine.rb:187:in `run'
+  thin (1.5.0) lib/thin/backends/base.rb:63:in `start'
+  thin (1.5.0) lib/thin/server.rb:159:in `start'
+  thin (1.5.0) lib/thin/controllers/controller.rb:86:in `start'
+  thin (1.5.0) lib/thin/runner.rb:187:in `run_command'
+  thin (1.5.0) lib/thin/runner.rb:152:in `run!'
+  thin (1.5.0) bin/thin:6:in `<top (required)>'
+  /Users/blanderson00/.rvm/gems/ruby-1.9.3-p194/bin/thin:19:in `load'
+  /Users/blanderson00/.rvm/gems/ruby-1.9.3-p194/bin/thin:19:in `<main>'
+  /Users/blanderson00/.rvm/gems/ruby-1.9.3-p194/bin/ruby_noexec_wrapper:14:in `eval'
+  /Users/blanderson00/.rvm/gems/ruby-1.9.3-p194/bin/ruby_noexec_wrapper:14:in `<main>'
+
+
+  Rendered /Users/blanderson00/.rvm/gems/ruby-1.9.3-p194/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.7ms)
+
+
+Started GET "/classrooms" for 127.0.0.1 at 2012-11-01 23:23:36 -0700
+Processing by ClassroomsController#index as HTML
+  [1m[36mClassroom Load (0.2ms)[0m  [1mSELECT "classrooms".* FROM "classrooms" [0m
+  [1m[35mTeacher Load (0.2ms)[0m  SELECT "teachers".* FROM "teachers" INNER JOIN "classrooms_teachers" ON "teachers"."id" = "classrooms_teachers"."teacher_id" WHERE "classrooms_teachers"."classroom_id" = 1
+  [1m[36mTeacher Load (0.1ms)[0m  [1mSELECT "teachers".* FROM "teachers" INNER JOIN "classrooms_teachers" ON "teachers"."id" = "classrooms_teachers"."teacher_id" WHERE "classrooms_teachers"."classroom_id" = 3[0m
+  [1m[35mTeacher Load (0.1ms)[0m  SELECT "teachers".* FROM "teachers" INNER JOIN "classrooms_teachers" ON "teachers"."id" = "classrooms_teachers"."teacher_id" WHERE "classrooms_teachers"."classroom_id" = 4
+  Rendered classrooms/index.html.erb within layouts/application (8.3ms)
+  [1m[36mTeacher Load (0.2ms)[0m  [1mSELECT "teachers".* FROM "teachers" WHERE "teachers"."id" = 1 LIMIT 1[0m
+  Rendered layouts/_navigation.html.erb (3.0ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 37ms (Views: 34.2ms | ActiveRecord: 0.8ms)
+
+ActionController::RoutingError (No route matches [GET] "/assets/css/bootstrap-responsive.css"):
+  actionpack (3.2.8) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  railties (3.2.8) lib/rails/rack/logger.rb:26:in `call_app'
+  railties (3.2.8) lib/rails/rack/logger.rb:16:in `call'
+  quiet_assets (1.0.1) lib/quiet_assets.rb:20:in `call_with_quiet_assets'
+  actionpack (3.2.8) lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  rack (1.4.1) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.4.1) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.2.8) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.4.1) lib/rack/lock.rb:15:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/static.rb:62:in `call'
+  rack-mini-profiler (0.1.22) Ruby/lib/mini_profiler/profiler.rb:187:in `call'
+  railties (3.2.8) lib/rails/engine.rb:479:in `call'
+  railties (3.2.8) lib/rails/application.rb:223:in `call'
+  railties (3.2.8) lib/rails/railtie/configurable.rb:30:in `method_missing'
+  thin (1.5.0) lib/thin/connection.rb:81:in `block in pre_process'
+  thin (1.5.0) lib/thin/connection.rb:79:in `catch'
+  thin (1.5.0) lib/thin/connection.rb:79:in `pre_process'
+  thin (1.5.0) lib/thin/connection.rb:54:in `process'
+  thin (1.5.0) lib/thin/connection.rb:39:in `receive_data'
+  eventmachine (1.0.0) lib/eventmachine.rb:187:in `run_machine'
+  eventmachine (1.0.0) lib/eventmachine.rb:187:in `run'
+  thin (1.5.0) lib/thin/backends/base.rb:63:in `start'
+  thin (1.5.0) lib/thin/server.rb:159:in `start'
+  thin (1.5.0) lib/thin/controllers/controller.rb:86:in `start'
+  thin (1.5.0) lib/thin/runner.rb:187:in `run_command'
+  thin (1.5.0) lib/thin/runner.rb:152:in `run!'
+  thin (1.5.0) bin/thin:6:in `<top (required)>'
+  /Users/blanderson00/.rvm/gems/ruby-1.9.3-p194/bin/thin:19:in `load'
+  /Users/blanderson00/.rvm/gems/ruby-1.9.3-p194/bin/thin:19:in `<main>'
+  /Users/blanderson00/.rvm/gems/ruby-1.9.3-p194/bin/ruby_noexec_wrapper:14:in `eval'
+  /Users/blanderson00/.rvm/gems/ruby-1.9.3-p194/bin/ruby_noexec_wrapper:14:in `<main>'
+
+
+
+
+Started GET "/favicon.ico" for 127.0.0.1 at 2012-11-01 23:23:36 -0700
+
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  actionpack (3.2.8) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  railties (3.2.8) lib/rails/rack/logger.rb:26:in `call_app'
+  railties (3.2.8) lib/rails/rack/logger.rb:16:in `call'
+  quiet_assets (1.0.1) lib/quiet_assets.rb:20:in `call_with_quiet_assets'
+  actionpack (3.2.8) lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  rack (1.4.1) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.4.1) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.2.8) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.4.1) lib/rack/lock.rb:15:in `call'
+  actionpack (3.2.8) lib/action_dispatch/middleware/static.rb:62:in `call'
+  rack-mini-profiler (0.1.22) Ruby/lib/mini_profiler/profiler.rb:286:in `call'
+  railties (3.2.8) lib/rails/engine.rb:479:in `call'
+  railties (3.2.8) lib/rails/application.rb:223:in `call'
+  railties (3.2.8) lib/rails/railtie/configurable.rb:30:in `method_missing'
+  thin (1.5.0) lib/thin/connection.rb:81:in `block in pre_process'
+  thin (1.5.0) lib/thin/connection.rb:79:in `catch'
+  thin (1.5.0) lib/thin/connection.rb:79:in `pre_process'
+  thin (1.5.0) lib/thin/connection.rb:54:in `process'
+  thin (1.5.0) lib/thin/connection.rb:39:in `receive_data'
+  eventmachine (1.0.0) lib/eventmachine.rb:187:in `run_machine'
+  eventmachine (1.0.0) lib/eventmachine.rb:187:in `run'
+  thin (1.5.0) lib/thin/backends/base.rb:63:in `start'
+  thin (1.5.0) lib/thin/server.rb:159:in `start'
+  thin (1.5.0) lib/thin/controllers/controller.rb:86:in `start'
+  thin (1.5.0) lib/thin/runner.rb:187:in `run_command'
+  thin (1.5.0) lib/thin/runner.rb:152:in `run!'
+  thin (1.5.0) bin/thin:6:in `<top (required)>'
+  /Users/blanderson00/.rvm/gems/ruby-1.9.3-p194/bin/thin:19:in `load'
+  /Users/blanderson00/.rvm/gems/ruby-1.9.3-p194/bin/thin:19:in `<main>'
+  /Users/blanderson00/.rvm/gems/ruby-1.9.3-p194/bin/ruby_noexec_wrapper:14:in `eval'
+  /Users/blanderson00/.rvm/gems/ruby-1.9.3-p194/bin/ruby_noexec_wrapper:14:in `<main>'
+
+
+  Rendered /Users/blanderson00/.rvm/gems/ruby-1.9.3-p194/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.6ms)
