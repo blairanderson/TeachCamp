@@ -1,13 +1,17 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <b>Class:</b>
-  <%= @message.class_id %>
+  <%# if @message.classroom_id > 0 %>
+  <b>Class: </b><%= @message.classroom_id %>
+  <%# end %>
+
 </p>
 
 <p>
-  <b>Student:</b>
-  <%= @message.student_id %>
+
+  <%# if @message.lesson_id > 0 %>
+  <b>lesson: </b><%= @message.lesson_id %>
+  <%# end %>
 </p>
 
 <p>

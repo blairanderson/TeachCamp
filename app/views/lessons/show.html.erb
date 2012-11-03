@@ -24,6 +24,19 @@
 <%= link_to 'Edit', edit_classroom_lesson_path(@classroom) %> |
 <%= link_to 'Back', classroom_lessons_path(@classroom) %>
 
+<span id="messages">
+  <h5>FAQ:</h5>
+  <ul>
+    <% @messages.reverse.each do |question| %>
+        <li>
+          <i><small><%= link_to "permalink", message_path(question.id), target: "_blank" %></small></i>
+          <b><%= question.message %></b>
+          <%= question.created_at %>
+        </li>
+    <% end %>
+  </ul>
+</span>
+
 <div id="disqus_thread"></div>
 <script type="text/javascript">
     /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */

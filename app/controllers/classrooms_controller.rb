@@ -15,6 +15,8 @@ class ClassroomsController < ApplicationController
   # GET /classrooms/1.json
   def show
     @classroom = Classroom.find(params[:id])
+    @messages = Message.where(classroom_id: params[:id])
+
 
     respond_to do |format|
       format.html # show.html.erb

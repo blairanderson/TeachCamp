@@ -3,20 +3,19 @@
 <table class="table table-bordered">
   <tr>
     <th>Class</th>
-    <th>Student</th>
+    <th>Lesson</th>
     <th>Message</th>
-    <th></th>
-    <th></th>
-    <th></th>
+    <th>Show</th>
+    <th>Delete</th>
   </tr>
+
 
 <% @messages.each do |message| %>
   <tr>
-    <td><%= message.class_id %></td>
-    <td><%= message.student_id %></td>
+    <td><%= message.classroom_id %></td>
+    <td><%= message.lesson_id %></td>
     <td><%= message.message %></td>
     <td><%= link_to 'Show', message %></td>
-    <td><%= link_to 'Edit', edit_message_path(message) %></td>
     <td><%= link_to 'Destroy', message, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>
