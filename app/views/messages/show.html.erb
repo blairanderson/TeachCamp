@@ -1,17 +1,15 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <%# if @message.classroom_id > 0 %>
-  <b>Class: </b><%= @message.classroom_id %>
-  <%# end %>
-
+  <% if @message.classroom_id > 0 %>
+      <b>Class: </b><%= @message.classroom_id %>
+  <% end %>
 </p>
 
 <p>
-
-  <%# if @message.lesson_id > 0 %>
-  <b>lesson: </b><%= @message.lesson_id %>
-  <%# end %>
+  <% if @message.lesson_id > 0 %>
+      <b>lesson: </b><%= @message.lesson_id %>
+  <% end %>
 </p>
 
 <p>
@@ -19,6 +17,12 @@
   <%= @message.message %>
 </p>
 
+<% if teacher_signed_in? %>
+    <%= link_to 'Edit', edit_message_path(
+            @message,
+            classroom_id: @message.classroom_id,
+            lesson_id: @message.lesson_id) %>
+    |
+<% end %>
 
-<%= link_to 'Edit', edit_message_path(@message) %> |
 <%= link_to 'Back', messages_path %>

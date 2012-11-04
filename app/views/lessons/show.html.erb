@@ -27,6 +27,7 @@
 <span id="messages">
   <h5>FAQ:</h5>
   <ul>
+    <li><%= link_to "new message", new_message_path(classroom_id: 0, lesson_id: @lesson.id) %> </li>
     <% @messages.reverse.each do |question| %>
         <li>
           <i><small><%= link_to "permalink", message_path(question.id), target: "_blank" %></small></i>

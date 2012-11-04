@@ -10,10 +10,9 @@
       </ul>
     </div>
   <% end %>
-
-    <%= f.input :classroom_id %>
-    <%= f.input :lesson_id %>
-    <%= f.input :message %>
+    <%= f.input :classroom_id, as: :hidden, :input_html => {:value => params['classroom_id'] } %>
+    <%= f.input :lesson_id, as: :hidden, :input_html => {:value => params['lesson_id'] } %>
+    <%= f.input :message, :required=> true %>
   <div class="actions">
     <%= f.submit %>
   </div>

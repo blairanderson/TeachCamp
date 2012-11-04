@@ -1,9 +1,5 @@
-<p id="notice"><%= notice %></p>
-
 <h1><%= @classroom.name %></h1>
-
 <%= link_to 'Edit Classroom', edit_classroom_path(@classroom) %>
-
 <h3>
   <b>Teacher:</b>
   <% @classroom.teachers.each do |teacher| %>
@@ -12,7 +8,7 @@
 </h3>
 <h5>Running Date: <%= @classroom.running_date %></h5>
 
-<span class="well">
+<span>
 <h4>Class Description: <br>
   <%= @classroom.description %> </h4>
 </span>
@@ -32,8 +28,9 @@
 </ol>
 
 <span id="messages">
-  <h5>FAQ:</h5>
+  <h5>FAQ: <i>(if messages exist for this class, they would be here.)</i></h5>
   <ul>
+    <li><%= link_to "new message", new_message_path(classroom_id: @classroom.id, lesson_id: 0) %> </li>
     <% @messages.reverse.each do |question| %>
         <li>
           <i><small><%= link_to "permalink", message_path(question.id), target: "_blank" %></small></i>
