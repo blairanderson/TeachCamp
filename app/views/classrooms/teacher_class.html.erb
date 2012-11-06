@@ -1,0 +1,32 @@
+<% if teacher_signed_in? %>
+    <h1>Teacher Classrooms</h1>
+    <%= link_to 'New Classroom', new_classroom_path %>
+    <table class="table table-hover table-condensed">
+      <tr>
+        <th>Teacher</th>
+        <th>Running date</th>
+        <th>Name</th>
+        <th>Description</th>
+        <th>edit</th>
+        <th>delete</th>
+      </tr>
+
+      <% @classrooms.each do |classroom| %>
+          <% classroom.teachers.each do |teacher| %>
+              <% if teacher.email == current_teacher.email %>
+                  <tr>
+                    <td><%= teacher.email %></td>
+                    <td><%= classroom.running_date %></td>
+                    <td><%= link_to classroom.name, classroom %></td>
+                    <td><%= link_to classroom.description, classroom %></td>
+                    <td><%= link_to 'Edit', edit_classroom_path(classroom) %></td>
+                    <td><%= link_to 'Destroy', classroom, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                  </tr>
+              <% end %>
+          <% end %>
+      <% end %>
+    </table>
+<% else %>
+ <%= render 'home_page_signed_out' %>
+<% end %>
+

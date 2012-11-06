@@ -9,24 +9,27 @@
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application", :media => "all" %>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+        body { padding-top: 60px; /* 60px to make the container go all the way
+        to the bottom of the topbar */ }
+      </style>
   <link href="assets/css/bootstrap-responsive.css" rel="stylesheet">
   <%= csrf_meta_tags %>
   <%= yield(:head) %>
 </head>
 <body>
-<header class="navbar navbar-fixed-top">
-  <%= render 'layouts/navigation' %>
-</header>
+<%= render 'layouts/navigation_top' %>
 <div id="main" role="main">
   <div class="container">
     <div class="content">
       <div class="row">
-        <div class="span12">
+        <div>
           <%= render 'layouts/messages' %>
           <%= yield %>
         </div>
       </div>
       <footer>
+        <%= render 'layouts/navigation_bottom' %>
       </footer>
     </div>
   </div> <!--! end of .container -->

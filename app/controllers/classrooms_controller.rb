@@ -11,6 +11,15 @@ class ClassroomsController < ApplicationController
     end
   end
 
+  def teacher_class
+    @classrooms = Classroom.all
+
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json { render json: @classrooms }
+    end
+  end
+
   # GET /classrooms/1
   # GET /classrooms/1.json
   def show

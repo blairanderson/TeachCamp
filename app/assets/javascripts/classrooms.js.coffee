@@ -3,3 +3,6 @@
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 
 
+jQuery ->
+  $('#classroom_running_date').datepicker
+    dateFormat: 'yy-mm-dd'
