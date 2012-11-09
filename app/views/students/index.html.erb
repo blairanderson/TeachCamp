@@ -2,18 +2,16 @@
 
 <table class="table table-bordered">
   <tr>
-    <th>School</th>
     <th>Name</th>
     <th>Phone</th>
     <th>Email</th>
     <th>Classrooms</th>
-    <th></th>
-    <th></th>
+    <th>Show</th>
+    <th>Edit</th>
   </tr>
 
 <% @students.each do |student| %>
   <tr>
-    <td><%= student.school.name %></td>
     <td><%= student.name %></td>
     <td><%= student.phone %></td>
     <td><%= student.email %></td>
