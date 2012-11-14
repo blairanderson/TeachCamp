@@ -19,6 +19,11 @@ class ClassroomsController < ApplicationController
 
   end
 
+  def attendance
+
+  end
+
+
 
   # GET /classrooms/1
   # GET /classrooms/1.json

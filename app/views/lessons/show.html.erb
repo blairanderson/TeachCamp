@@ -1,56 +1,41 @@
+
 <p id="notice"><%= notice %></p>
+<div class="container">
+  <div class="row">
+    <h3><b>Class: </b><%= link_to @classroom.name, classroom_path(@classroom) %></h3>
 
-<h3>
-  <b>Class:</b>
-  <%= link_to @classroom.name, classroom_path(@classroom) %>
-</h3>
+    <p><b>Name: </b><%= @lesson.name %>
+      <%= link_to 'Edit', edit_classroom_lesson_path(@classroom) %> |
+      <%= link_to 'Back', classroom_lessons_path(@classroom) %></p>
+    <p><b>Description: </b><%= @lesson.description %></p>
+    <p><b>Date: </b><%= @lesson.date %></p>
+    <div class="span5">
+      <div id="disqus_thread">
+        <script type="text/javascript">
+            /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+            var disqus_shortname = 'teachcamp'; // required: replace example with your forum shortname
 
-<p>
-  <b>Name:</b>
-  <%= @lesson.name %>
-</p>
-
-<p>
-  <b>Description:</b>
-  <%= @lesson.description %>
-</p>
-
-<p>
-  <b>Date:</b>
-  <%= @lesson.date %>
-</p>
-
-
-<%= link_to 'Edit', edit_classroom_lesson_path(@classroom) %> |
-<%= link_to 'Back', classroom_lessons_path(@classroom) %>
-
-<span id="messages">
-  <h5>FAQ:</h5>
-  <ul>
-    <li><%= link_to "new message", new_message_path(lesson_id: @lesson.id) %> </li>
-    <% @messages.reverse.each do |question| %>
-        <li>
-          <i><small><%= link_to "permalink", message_path(question.id), target: "_blank" %></small></i>
-          <b><%= question.message %></b>
-          <%= question.created_at %>
-          <%= link_to 'Edit', edit_message_path(question.id) %>
-          <%= link_to 'Destroy', message_path(question.id), method: :delete, data: { confirm: 'Are you sure?' } %>
-        </li>
-    <% end %>
-  </ul>
-</span>
-
-<div id="disqus_thread"></div>
-<script type="text/javascript">
-    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
-    var disqus_shortname = 'teachcamp'; // required: replace example with your forum shortname
-
-    /* * * DON'T EDIT BELOW THIS LINE * * */
-    (function() {
-        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
-        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-    })();
-</script>
-<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+            /* * * DON'T EDIT BELOW THIS LINE * * */
+            (function() {
+                var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+            })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+      </div>
+    </div>
+    <div class="span4 well">
+      <h5>FAQ: <%= link_to "new", new_message_path(lesson_id: @lesson.id) %></h5>
+      <ul class="unstyled">
+        <% @messages.reverse.each do |question| %>
+            <li>
+              <i><small><%= link_to question.created_at, message_path(question.id), target: "_blank" %></small></i>
+              <b><%= question.message %></b>
+            </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>
