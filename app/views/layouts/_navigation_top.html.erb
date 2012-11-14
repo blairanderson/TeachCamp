@@ -25,9 +25,9 @@
         <% else %>
             <li><%= link_to "Sign up", new_teacher_registration_path %></li>
             <li><%= link_to "Login", new_teacher_session_path %></li>
-            <form class="navbar-form pull-right">
-              <input name="textinput1" type="email" placeholder="does not work" class="span2">
-              <input name="textinput2" type="password" placeholder="does not work" class="span2">
+              <%= form_tag "teachers/login", class: "navbar-form pull-right" %>
+              <input name="teacher[email]" type="email" placeholder="email" class="span2">
+              <input name="teacher[password]" type="password" placeholder="password" class="span2">
               <button class="btn">
                 Sign in
               </button>

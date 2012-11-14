@@ -12,14 +12,13 @@ class ClassroomsController < ApplicationController
   end
 
   def teacher_class
-    @classrooms = current_teacher.classrooms
+    if teacher_signed_in?
+      @classrooms = current_teacher.classrooms
 
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @classrooms }
     end
+
   end
+
 
   # GET /classrooms/1
   # GET /classrooms/1.json
