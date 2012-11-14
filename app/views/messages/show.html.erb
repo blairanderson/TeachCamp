@@ -1,13 +1,13 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <% if @message.classroom_id > 0 %>
+  <% if @message.classroom_id %>
       <b>Class: </b><%= @message.classroom_id %>
   <% end %>
 </p>
 
 <p>
-  <% if @message.lesson_id > 0 %>
+  <% if @message.lesson_id %>
       <b>lesson: </b><%= @message.lesson_id %>
   <% end %>
 </p>
@@ -16,13 +16,5 @@
   <b>Message:</b>
   <%= @message.message %>
 </p>
-
-<% if teacher_signed_in? %>
-    <%= link_to 'Edit', edit_message_path(
-            @message,
-            classroom_id: @message.classroom_id,
-            lesson_id: @message.lesson_id) %>
-    |
-<% end %>
-
-<%= link_to 'Back', messages_path %>
+<%= link_to 'Edit', edit_message_path(@message) %> |
+<%= link_to 'Destroy', message_path, method: :delete, data: { confirm: 'Are you sure?' } %>

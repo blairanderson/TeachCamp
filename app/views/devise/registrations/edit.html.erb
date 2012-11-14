@@ -7,6 +7,7 @@
     <%= f.input :email, :required => true, :autofocus => true %>
     <%= f.input :username, :required => false %>
     <%= f.input :full_name, :required => false %>
+    <%= f.association :school, :required => true %>
     <%= f.input :phone, :required => false %>
     <%= f.input :password, :autocomplete => "off", :hint => "leave it blank if you don't want to change it", :required => false %>
     <%= f.input :password_confirmation, :required => false %>

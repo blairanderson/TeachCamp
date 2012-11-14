@@ -2,7 +2,8 @@
   <div class="navbar-inner">
     <div class="container">
       <ul class="nav">
-        <li><%= link_to "© Always Made by Blair", root_path %></li>
+        <li><%= link_to "© Made by Blair", root_path %></li>
+        <li><%= params if Rails.env.development? %></li>
       </ul>
     </div>
   </div>

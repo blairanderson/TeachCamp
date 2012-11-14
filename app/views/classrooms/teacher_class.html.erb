@@ -12,21 +12,21 @@
       </tr>
 
       <% @classrooms.each do |classroom| %>
-          <% classroom.teachers.each do |teacher| %>
-              <% if teacher.email == current_teacher.email %>
-                  <tr>
-                    <td><%= teacher.email %></td>
-                    <td><%= classroom.running_date %></td>
-                    <td><%= link_to classroom.name, classroom %></td>
-                    <td><%= link_to classroom.description, classroom %></td>
-                    <td><%= link_to 'Edit', edit_classroom_path(classroom) %></td>
-                    <td><%= link_to 'Destroy', classroom, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-                  </tr>
+          <tr>
+            <td>
+              <% classroom.teachers.each do |teacher| %>
+                  <%= teacher.email %> <br>
               <% end %>
-          <% end %>
+            </td>
+            <td><%= classroom.running_date %></td>
+            <td><%= link_to classroom.name, classroom %></td>
+            <td><%= link_to classroom.description, classroom %></td>
+            <td><%= link_to 'Edit', edit_classroom_path(classroom) %></td>
+            <td><%= link_to 'Destroy', classroom, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          </tr>
       <% end %>
     </table>
 <% else %>
- <%= render 'home_page_signed_out' %>
+    <%= render 'home_page_signed_out' %>
 <% end %>
 

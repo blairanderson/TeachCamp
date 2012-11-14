@@ -1,4 +1,30 @@
 <h1><b>New lesson for </b><i><%= @classroom.name %></i></h1>
 <%= link_to "Back", classroom_path(@classroom.id), class: "btn" %>
 
-<%= render 'form' %>
+<%= simple_form_for(@lesson, url: classroom_lessons_path) do |f| %>
+    <% if @lesson.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@lesson.errors.count, "error") %> prohibited this lesson from being saved:</h2>
+
+          <ul>
+            <% @lesson.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+
+    <table class="table">
+      <tr>
+        <th><%= f.input :name %></th>
+        <th><%= f.input :description %>
+        </th>
+        <th>
+          <%= f.input :date %>
+        </th>
+      </tr>
+    </table>
+    <div class="actions">
+      <%= f.submit %>
+    </div>
+<% end %>

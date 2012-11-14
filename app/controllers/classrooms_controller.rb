@@ -12,7 +12,8 @@ class ClassroomsController < ApplicationController
   end
 
   def teacher_class
-    @classrooms = Classroom.all
+    @classrooms = current_teacher.classrooms
+
 
     respond_to do |format|
       format.html # index.html.erb

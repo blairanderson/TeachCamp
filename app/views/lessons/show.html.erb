@@ -27,12 +27,14 @@
 <span id="messages">
   <h5>FAQ:</h5>
   <ul>
-    <li><%= link_to "new message", new_message_path(classroom_id: 0, lesson_id: @lesson.id) %> </li>
+    <li><%= link_to "new message", new_message_path(lesson_id: @lesson.id) %> </li>
     <% @messages.reverse.each do |question| %>
         <li>
           <i><small><%= link_to "permalink", message_path(question.id), target: "_blank" %></small></i>
           <b><%= question.message %></b>
           <%= question.created_at %>
+          <%= link_to 'Edit', edit_message_path(question.id) %>
+          <%= link_to 'Destroy', message_path(question.id), method: :delete, data: { confirm: 'Are you sure?' } %>
         </li>
     <% end %>
   </ul>

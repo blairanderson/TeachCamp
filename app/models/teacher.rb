@@ -6,7 +6,7 @@ class Teacher < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :username, :full_name, :phone
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :username, :full_name, :phone, :school_id
   # attr_accessible :title, :body
 
   has_and_belongs_to_many :classrooms
