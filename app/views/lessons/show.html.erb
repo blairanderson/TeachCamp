@@ -8,7 +8,7 @@
       <%= link_to 'Edit', edit_classroom_lesson_path(@classroom) %> |
       <%= link_to 'Back', classroom_lessons_path(@classroom) %></p>
     <p><b>Description: </b><%= @lesson.description %></p>
-    <p><b>Date: </b><%= @lesson.date %></p>
+    <p><b>Date: </b><%= @lesson.date.to_date %></p>
     <div class="span5">
       <div id="disqus_thread">
         <script type="text/javascript">

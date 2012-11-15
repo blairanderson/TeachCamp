@@ -19,7 +19,7 @@
     <td><%= lesson.date %></td>
     <td><%= link_to 'Show', classroom_lesson_path(@classroom.id, lesson.id) %></td>
     <td><%= link_to 'Edit', edit_classroom_lesson_path(@classroom.id, lesson.id) %></td>
-    <td><%# link_to 'Destroy', classroom_lesson_path, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= link_to 'Destroy', classroom_lesson_path, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>
 </table>

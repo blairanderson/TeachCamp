@@ -1,6 +1,28 @@
-<h1><b>Editing Lesson for </b><i><%= @classroom.name %></i></h1>
+<div class="container span5">
+  <div class="container span5">
+    <h1><b>Editing Lesson for </b><i><%= @classroom.name %></i></h1>
 
-<%= render 'form' %>
+    <%= simple_form_for(@lesson, url: classroom_lesson_path(@classroom.id, @lesson.id)) do |f| %>
+        <% if @lesson.errors.any? %>
+            <div id="error_explanation">
+              <h2><%= pluralize(@lesson.errors.count, "error") %> prohibited this lesson from being saved:</h2>
 
-<%= link_to 'Show', classroom_lesson_path %> |
-<%# link_to 'Back', classrooms_path %>
+              <ul>
+                <% @lesson.errors.full_messages.each do |msg| %>
+                    <li><%= msg %></li>
+                <% end %>
+              </ul>
+            </div>
+        <% end %>
+
+        <%= f.input :name %>
+        <%= f.label :description %>
+        <%= f.input_field :description,:as => :text, rows: "5"  %>
+        <%= f.input :date, as: :string %>
+        <div class="actions">
+          <%= f.submit %>
+        </div>
+    <% end %>
+    <%= link_to 'Show', classroom_lesson_path %>
+  </div>
+</div>

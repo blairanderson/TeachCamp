@@ -1,21 +1,23 @@
-<h1>New message</h1>
+<div class="container span5">
+  <h1>New message</h1>
+  <%= simple_form_for(@message) do |f| %>
+      <% if @message.errors.any? %>
+          <div id="error_explanation">
+            <h2><%= pluralize(@message.errors.count, "error") %> prohibited this message from being saved:</h2>
 
-<%= simple_form_for(@message) do |f| %>
-  <% if @message.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@message.errors.count, "error") %> prohibited this message from being saved:</h2>
-
-      <ul>
-      <% @message.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
+            <ul>
+              <% @message.errors.full_messages.each do |msg| %>
+                  <li><%= msg %></li>
+              <% end %>
+            </ul>
+          </div>
       <% end %>
-      </ul>
-    </div>
+      <%= f.input :classroom_id, as: :hidden, :input_html => {:value => params['classroom_id']} %>
+      <%= f.input :lesson_id, as: :hidden, :input_html => {:value => params['lesson_id'] } %>
+      <%= f.input :message, :required=> true %>
+      <div class="actions">
+        <%= f.submit %>
+      </div>
   <% end %>
-    <%= f.input :classroom_id, as: :hidden, :input_html => {:value => params['classroom_id']} %>
-    <%= f.input :lesson_id, as: :hidden, :input_html => {:value => params['lesson_id'] } %>
-    <%= f.input :message, :required=> true %>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+
+</div>

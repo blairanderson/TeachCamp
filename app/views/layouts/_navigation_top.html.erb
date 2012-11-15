@@ -23,8 +23,7 @@
             </li>
             </ul>
         <% else %>
-            <li><%= link_to "Sign up", new_teacher_registration_path %></li>
-            <li><%= link_to "Login", new_teacher_session_path %></li>
+            <li><%= link_to "Create New Account!", new_teacher_registration_path %></li>
               <%= form_tag "teachers/login", class: "navbar-form pull-right" %>
               <input name="teacher[email]" type="email" placeholder="email" class="span2">
               <input name="teacher[password]" type="password" placeholder="password" class="span2">
