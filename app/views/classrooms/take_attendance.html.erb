@@ -1,0 +1,42 @@
+
+<div class="span7 offset1" >
+  <ul class="unstyled">
+    <% @classroom.students.each do |student| %>
+        <li><%= link_to student.name, process_attendance_classroom_path(classroom_id: @classroom.id, student_id: student.id, present: true ) %>
+          <%= "Done" if student.attendances.today.count > 0 %>
+        </li>
+
+        <!--
+
+       Include buttons for present/tardy/excused
+
+
+       Text students and parents
+
+
+       Submit attendance so that administrative staff gets a summary
+
+
+       student report page shows all the classrooms, then click to the
+       classroom to show reports for the classroom
+
+
+       attendance records in a pie chart for the last week
+       multiple weeks of records showing multiple pie charts
+
+
+        -->
+
+
+    <% end %>
+  </ul>
+</div>
+
+
+<ul>
+  <% @classroom.attendances.today.each do |attendance| %>
+      <li><%= attendance.student.name %> Present: <%= attendance.present %> <%= attendance.created_at.to_date %></li>
+
+  <% end %>
+</ul>
+

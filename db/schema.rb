@@ -11,17 +11,16 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121031025911) do
+ActiveRecord::Schema.define(:version => 20121116042028) do
 
   create_table "attendances", :force => true do |t|
     t.integer  "student_id"
-    t.integer  "class_id"
+    t.integer  "classroom_id"
     t.boolean  "present"
     t.boolean  "tardy"
     t.boolean  "excused"
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
-    t.integer  "classroom_id"
   end
 
   create_table "classrooms", :force => true do |t|

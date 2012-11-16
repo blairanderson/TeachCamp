@@ -5,7 +5,7 @@
 <p>
   <b>Classes:</b>
   <% @student.classrooms.each do |classroom| %>
-     <br><%= link_to classroom.name, classroom %>
+      <br><%= link_to classroom.name, classroom %>
   <% end %>
 </p>
 <p>
@@ -26,3 +26,13 @@
 
 <%= link_to 'Edit', edit_student_path(@student) %> |
 <%= link_to 'Back', students_path %>
+
+<ul>
+  <% @student.classrooms.each do |classroom| %>
+      <h6><%= classroom.name %></h6>
+      <% @student.attendances.where(classroom_id: classroom.id).limit(180).each do |attendance| %>
+          <li><%= attendance.created_at.to_date %> <%= attendance.present %> </li>
+      <% end %>
+  <% end %>
+
+</ul>

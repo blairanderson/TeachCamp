@@ -7,6 +7,11 @@ Teachcamp::Application.routes.draw do
   resources :parents
 
   resources :classrooms do
+    member do
+      get 'take_attendance'
+      get 'process_attendance'
+    end
+
     resources :lessons
     resources :messages
   end

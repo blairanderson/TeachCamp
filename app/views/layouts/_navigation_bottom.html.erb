@@ -3,8 +3,9 @@
     <div class="container">
       <ul class="nav">
         <li><%= link_to "© Made by Blair", root_path %></li>
-        <li><%= params if Rails.env.development? %></li>
+        <li><%= link_to current_teacher.email, '#' %></li>
       </ul>
+      <%= params if Rails.env.development? %>
     </div>
   </div>
 </div>

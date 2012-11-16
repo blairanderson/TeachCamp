@@ -19,8 +19,16 @@ class ClassroomsController < ApplicationController
 
   end
 
-  def attendance
+  def take_attendance
+    @classroom = Classroom.find(params[:id])
 
+  end
+
+  def process_attendance
+    @classroom = Classroom.find(params[:id])
+    @classroom.attendances.create student_id: params[:student_id], classroom_id: params[:classroom_id], present: params[:present]
+
+    redirect_to take_attendance_classroom_path
   end
 
 
@@ -30,6 +38,7 @@ class ClassroomsController < ApplicationController
   def show
     @classroom = Classroom.find(params[:id])
     @messages = Message.where(classroom_id: params[:id])
+    @students = @classroom.students.all
 
 
     respond_to do |format|
