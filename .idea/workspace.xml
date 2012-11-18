@@ -4,7 +4,6 @@
     <list default="true" id="5f4aa282-cabe-4526-bf01-09d14af4b555" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/development.sqlite3" afterPath="$PROJECT_DIR$/db/development.sqlite3" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/classrooms_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/classrooms_controller.rb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/classrooms/take_attendance.html.erb" afterPath="$PROJECT_DIR$/app/views/classrooms/take_attendance.html.erb" />
     </list>
     <ignored path="teachcamp.iws" />
@@ -49,7 +48,7 @@
       <file leaf-file-name="take_attendance.html.erb" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/views/classrooms/take_attendance.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="86" column="56" selection-start="3444" selection-end="3444" vertical-scroll-proportion="0.40336135">
+            <state line="65" column="0" selection-start="2715" selection-end="2715" vertical-scroll-proportion="0.3815126">
               <folding />
             </state>
           </provider>
@@ -94,7 +93,7 @@
       <file leaf-file-name="show.html.erb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/students/show.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="20" column="35" selection-start="293" selection-end="293" vertical-scroll-proportion="-12.8">
+            <state line="28" column="28" selection-start="431" selection-end="431" vertical-scroll-proportion="-14.72">
               <folding />
             </state>
           </provider>
@@ -133,10 +132,10 @@
         <option value="$PROJECT_DIR$/app/views/classrooms/show.html.erb" />
         <option value="$PROJECT_DIR$/config/routes.rb" />
         <option value="$PROJECT_DIR$/app/models/attendance.rb" />
-        <option value="$PROJECT_DIR$/app/views/students/show.html.erb" />
         <option value="$PROJECT_DIR$/app/views/layouts/_navigation_bottom.html.erb" />
         <option value="$PROJECT_DIR$/app/helpers/application_helper.rb" />
         <option value="$PROJECT_DIR$/app/controllers/classrooms_controller.rb" />
+        <option value="$PROJECT_DIR$/app/views/students/show.html.erb" />
         <option value="$PROJECT_DIR$/app/views/classrooms/take_attendance.html.erb" />
       </list>
     </option>
@@ -696,13 +695,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/students/show.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="35" selection-start="293" selection-end="293" vertical-scroll-proportion="-12.8">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/classrooms_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="22" column="22" selection-start="420" selection-end="420" vertical-scroll-proportion="0.0">
@@ -710,9 +702,16 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/students/show.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="28" column="28" selection-start="431" selection-end="431" vertical-scroll-proportion="-14.72">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/classrooms/take_attendance.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="86" column="56" selection-start="3444" selection-end="3444" vertical-scroll-proportion="0.40336135">
+        <state line="65" column="0" selection-start="2715" selection-end="2715" vertical-scroll-proportion="0.3815126">
           <folding />
         </state>
       </provider>
