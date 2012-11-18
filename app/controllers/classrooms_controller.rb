@@ -22,6 +22,8 @@ class ClassroomsController < ApplicationController
   def take_attendance
     @classroom = Classroom.find(params[:id])
 
+
+
   end
 
   def process_attendance

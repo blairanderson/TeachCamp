@@ -1,58 +1,95 @@
+<% checked_in = 0 %>
+<% not_checked_in = 0 %>
 <div class="span7 offset1" >
   <table class="table table-bordered table-condensed">
     <thead>
-    <th></th>
-    <th>Student</th>
-    <th>Status</th>
-    <th>Present</th>
-    <th>Tardy</th>
-    <th>Absent</th>
-    <th>Excused</th>
+    <tr>
+      <th></th>
+      <th>Student</th>
+      <th>Status</th>
+      <th>Present</th>
+      <th>Tardy</th>
+      <th>Absent</th>
+      <th>Excused</th>
+    </tr>
     </thead>
     <% @classroom.students.each do |student| %>
-        <!-- this is currently slightly broken.
-    classrooms/id/take_attendance shows most recent attendance check-in no matter which class it was created on
-
-
-        -->
-        <tr>
-          <td><%=  image_tag "http://placehold.it/75" %></td>
-          <td><%= link_to student.name, student_path(student.id) %></td>
-          <td>
-            <% if student.attendances.last.present? %>
-                <% if student.attendances.last.tardy?  %>
-                    <p>Tardy</p>
-                <% else %>
-                    <p>Present</p>
-                <% end %>
-            <% else %>
-                <% if student.attendances.last.excused? %>
-                    <p>Excused</p>
-                <% else %>
-                    <p>Un-Excused</p>
-                <% end %>
-            <% end %>
-          </td>
-          <td><%= link_to "Present" , process_attendance_classroom_path(classroom_id: @classroom.id, student_id: student.id, present: true, tardy: false, excused: false ) %></td>
-          <td><%= link_to "Tardy" , process_attendance_classroom_path(classroom_id: @classroom.id, student_id: student.id, present: true, tardy: true, excused: false ) %></td>
-          <td><%= link_to "Absent" , process_attendance_classroom_path(classroom_id: @classroom.id, student_id: student.id, present: false,tardy: false, excused: false ) %></td>
-          <td><%= link_to "Excused" , process_attendance_classroom_path(classroom_id: @classroom.id, student_id: student.id, present: false, tardy: false, excused: true ) %></td>
-        </tr>
         <!--
-       Include buttons for present/tardy/excused
+This is currently slightly broken: classrooms/id/take_attendance shows most recent attendance check-in,
+ no matter which class it was created on. If a student has not checked in, it should not show a status
 
-       Text students and parents
+ Also if that student has NEVER had an attendance record then the page breaks!
 
-       Submit attendance so that administrative staff gets a summary
+ Submit attendance so that administrative staff gets a summary
+
+ Text students and parents
 
        student report page shows all the classrooms, then click to the
        classroom to show reports for the classroom
 
        attendance records in a pie chart for the last week
        multiple weeks of records showing multiple pie charts
+
+
+Required District Information to Report:
+Each student with an unexcused absence during the reporting period may only be counted once.
+Schools are required to report the following information:
+
+Number of students with five or more unexcused absences in any one month during the
+reporting period.
+
+Number of students with ten or more unexcused absences during the school year.
+
+
+
+
         -->
+        <tbody>
+        <tr>
+          <td><%=  image_tag "http://placehold.it/75", class: "img-circle" %></td>
+          <td><%= link_to student.name, student_path(student.id) %></td>
+          <td>
+
+            <% if student.attendances.today.where(classroom_id: @classroom.id).count > 0 %>
+
+                <% if student.attendances.last.present? %>
+                    <% if student.attendances.last.tardy?  %>
+                        <p>Tardy</p>
+                    <% else %>
+                        <p>Present</p>
+                    <% end %>
+                <% else %>
+                    <% if student.attendances.last.excused? %>
+                        <p>Absent<br>Excused</p>
+                    <% else %>
+                        <p>Absent<br>Un-Excused</p>
+                    <% end %>
+                <% end %>
+                <% checked_in += 1 %>
+            <% else %>
+                <p>Please Take Attendance</p>
+                <% not_checked_in += 1 %>
+            <% end %>
+          </td>
+          <td><%= link_to "Present" , process_attendance_classroom_path(classroom_id: @classroom.id, student_id: student.id, present: true, tardy: false, excused: false ), class: "btn" %></td>
+          <td><%= link_to "Tardy" , process_attendance_classroom_path(classroom_id: @classroom.id, student_id: student.id, present: true, tardy: true, excused: false ) %></td>
+          <td><%= link_to "Absent" , process_attendance_classroom_path(classroom_id: @classroom.id, student_id: student.id, present: false,tardy: false, excused: false ) %></td>
+          <td><%= link_to "Excused" , process_attendance_classroom_path(classroom_id: @classroom.id, student_id: student.id, present: false, tardy: false, excused: true ) %></td>
+        </tr>
     <% end %>
+    </tbody>
   </table>
+  <div class="span3 container">
+
+    <% if @classroom.students.count == checked_in %>
+        <button class="btn btn-primary btn-block">Submit Attendance to Office</button>
+        <% else %>
+        <button class="btn disabled btn-primary btn-mini">Submit Attendance to Office</button>
+        <% end %>
+    <p>Students in this Class: <%= @classroom.students.count %></p>
+     <p>Not checked in: <%= not_checked_in %></p>
+     <p>Checked in: <%= checked_in %></p>
+  </div>
 </div>
 
 
