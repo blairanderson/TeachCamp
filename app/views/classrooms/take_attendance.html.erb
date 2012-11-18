@@ -1,42 +1,73 @@
-
 <div class="span7 offset1" >
-  <ul class="unstyled">
+  <table class="table table-bordered table-condensed">
+    <thead>
+    <th></th>
+    <th>Student</th>
+    <th>Status</th>
+    <th>Present</th>
+    <th>Tardy</th>
+    <th>Absent</th>
+    <th>Excused</th>
+    </thead>
     <% @classroom.students.each do |student| %>
-        <li><%= link_to student.name, process_attendance_classroom_path(classroom_id: @classroom.id, student_id: student.id, present: true ) %>
-          <%= "Done" if student.attendances.today.count > 0 %>
-        </li>
+        <!-- this is currently slightly broken.
+    classrooms/id/take_attendance shows most recent attendance check-in no matter which class it was created on
 
+
+        -->
+        <tr>
+          <td><%=  image_tag "http://placehold.it/75" %></td>
+          <td><%= link_to student.name, student_path(student.id) %></td>
+          <td>
+            <% if student.attendances.last.present? %>
+                <% if student.attendances.last.tardy?  %>
+                    <p>Tardy</p>
+                <% else %>
+                    <p>Present</p>
+                <% end %>
+            <% else %>
+                <% if student.attendances.last.excused? %>
+                    <p>Excused</p>
+                <% else %>
+                    <p>Un-Excused</p>
+                <% end %>
+            <% end %>
+          </td>
+          <td><%= link_to "Present" , process_attendance_classroom_path(classroom_id: @classroom.id, student_id: student.id, present: true, tardy: false, excused: false ) %></td>
+          <td><%= link_to "Tardy" , process_attendance_classroom_path(classroom_id: @classroom.id, student_id: student.id, present: true, tardy: true, excused: false ) %></td>
+          <td><%= link_to "Absent" , process_attendance_classroom_path(classroom_id: @classroom.id, student_id: student.id, present: false,tardy: false, excused: false ) %></td>
+          <td><%= link_to "Excused" , process_attendance_classroom_path(classroom_id: @classroom.id, student_id: student.id, present: false, tardy: false, excused: true ) %></td>
+        </tr>
         <!--
-
        Include buttons for present/tardy/excused
-
 
        Text students and parents
 
-
        Submit attendance so that administrative staff gets a summary
-
 
        student report page shows all the classrooms, then click to the
        classroom to show reports for the classroom
 
-
        attendance records in a pie chart for the last week
        multiple weeks of records showing multiple pie charts
-
-
         -->
+    <% end %>
+  </table>
+</div>
 
+
+<div class="span7 offset1" >
+  <ul class="unstyled">
+    <% @classroom.attendances.today.reverse.each do |attendance| %>
+        <li>
+          <%= attendance.student.name %>
+          <%= attendance.created_at.to_date %>
+          Present: <%= attendance.present %>
+          Tardy: <%= attendance.tardy  %>
+          Excused: <%= attendance.excused %>
+        </li>
 
     <% end %>
   </ul>
 </div>
-
-
-<ul>
-  <% @classroom.attendances.today.each do |attendance| %>
-      <li><%= attendance.student.name %> Present: <%= attendance.present %> <%= attendance.created_at.to_date %></li>
-
-  <% end %>
-</ul>
 
