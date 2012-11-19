@@ -1,4 +1,6 @@
 class ParentsController < ApplicationController
+  before_filter :authenticate_teacher!
+
   # GET /parents
   # GET /parents.json
   def index

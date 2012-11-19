@@ -1,4 +1,6 @@
 class AttendancesController < ApplicationController
+  before_filter :authenticate_teacher!
+
   # GET /attendances
   # GET /attendances.json
   def index

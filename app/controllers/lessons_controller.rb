@@ -1,4 +1,6 @@
 class LessonsController < ApplicationController
+  before_filter :authenticate_teacher!
+
   before_filter :find_classroom
   # GET /lessons
   # GET /lessons.json

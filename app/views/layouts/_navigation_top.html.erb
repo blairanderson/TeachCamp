@@ -22,7 +22,7 @@
               <li><%= link_to "Logout", destroy_teacher_session_path, method: :delete %></li>
           <% else %>
               <li><%= link_to "Create New Account!", new_teacher_registration_path %></li>
-              <%= form_tag "teachers/login", class: "navbar-form pull-right" %>
+              <%= form_tag "/teachers/login", class: "navbar-form pull-right" %>
               <input name="teacher[email]" type="email" placeholder="email" class="span2">
               <input name="teacher[password]" type="password" placeholder="password" class="span2">
               <button class="btn">
