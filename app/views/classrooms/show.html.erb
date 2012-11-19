@@ -47,7 +47,7 @@
       <h4><%= link_to "Take Attendance", take_attendance_classroom_path %></h4>
       <ul class="unstyled">
         <% @students.each do |student| %>
-            <li><%= student.name %></li>
+            <li><%= link_to student.name, student_path(student.id), class: "muted" %></li>
         <% end %>
       </ul>
     </div>

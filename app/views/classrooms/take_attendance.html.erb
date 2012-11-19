@@ -5,7 +5,7 @@
   <table class="table table-bordered table-condensed">
     <thead>
     <tr>
-      <th></th>
+      <th>Picture</th>
       <th>Student</th>
       <th>Status</th>
       <th>Present</th>
@@ -15,37 +15,24 @@
     </tr>
     </thead>
     <% @classroom.students.each do |student| %>
-        <!--
- Submit attendance so that administrative staff gets a summary
 
- Text students and parents
-
-       student report page shows all the classrooms, then click to the
-       classroom to show reports for the classroom
-
-       attendance records in a pie chart for the last week
-       multiple weeks of records showing multiple pie charts
-
-        -->
         <tbody>
         <tr>
           <td><%=  image_tag "http://placehold.it/75", class: "img-circle" %></td>
           <td><%= link_to student.name, student_path(student.id) %></td>
           <td>
-
-            <% if student.attendances.today.where(classroom_id: @classroom.id).count > 0 %>
-
-                <% if student.attendances.last.present? %>
-                    <% if student.attendances.last.tardy?  %>
+            <% if student.attendances.where(classroom_id: @classroom.id).today.count > 0 %>
+                <% if student.attendances.where(classroom_id: @classroom.id).today.last.present? %>
+                    <% if student.attendances.where(classroom_id: @classroom.id).today.last.tardy? %>
                         <div class="alert"><p>Tardy</p></div>
                     <% else %>
                         <div class="alert alert-success"><p>Present</p></div>
                     <% end %>
                 <% else %>
-                    <% if student.attendances.last.excused? %>
-                        <div class="alert alert-info"><p>Absent<br>Excused</p></div>
+                    <% if student.attendances.where(classroom_id: @classroom.id).today.last.excused? %>
+                        <div class="alert alert-info"><p>Excused</p></div>
                     <% else %>
-                        <div class="alert alert-error alert-block"><p>UnExcused</p></div>
+                        <div class="alert alert-info"><b>Absent!</b></div>
                     <% end %>
                 <% end %>
                 <% checked_in += 1 %>
@@ -54,41 +41,59 @@
                 <% not_checked_in += 1 %>
             <% end %>
           </td>
-          <td><%= link_to "Present" , process_attendance_classroom_path(classroom_id: @classroom.id, student_id: student.id, present: true, tardy: false, excused: false ) %></td>
-          <td><%= link_to "Tardy" , process_attendance_classroom_path(classroom_id: @classroom.id, student_id: student.id, present: true, tardy: true, excused: false ) %></td>
-          <td><%= link_to "Absent" , process_attendance_classroom_path(classroom_id: @classroom.id, student_id: student.id, present: false,tardy: false, excused: false ) %></td>
-          <td><%= link_to "Excused" , process_attendance_classroom_path(classroom_id: @classroom.id, student_id: student.id, present: false, tardy: false, excused: true ) %></td>
+          <td><%= link_to "Present" , process_attendance_classroom_path(classroom_id: @classroom.id, student_id: student.id, present: true, tardy: false, excused: false ), class: "btn" %></td>
+          <td><%= link_to "Tardy" , process_attendance_classroom_path(classroom_id: @classroom.id, student_id: student.id, present: true, tardy: true, excused: false ), class: "btn" %></td>
+          <td><%= link_to "Absent" , process_attendance_classroom_path(classroom_id: @classroom.id, student_id: student.id, present: false,tardy: false, excused: false ), class: "btn" %></td>
+          <td><%= link_to "Excused" , process_attendance_classroom_path(classroom_id: @classroom.id, student_id: student.id, present: false, tardy: false, excused: true ), class: "btn" %></td>
         </tr>
     <% end %>
     </tbody>
   </table>
-  <div class="span3 container">
-    <p>Students in this Class: <%= @classroom.students.count.to_f %></p>
-      <p>Not checked in: <%= not_checked_in %></p>
-      <p>Checked in: <%= checked_in %></p>
-
+  <div class="container">
     <% if @classroom.students.count == checked_in %>
-        <button class="btn btn-primary btn-block">Submit Attendance to Office</button>
+        <button class="btn btn-primary">Submit Attendance to Office</button>
     <% else %>
-        <button class="btn disabled btn-primary btn-mini">Submit Attendance to Office</button>
+        <button class="btn btn-primary disabled">Submit Attendance to Office</button><small>Please continue taking Attendance</small>
     <% end %>
-
+  </div>
+  <br>
+  <div class="progress progress-striped active progress-success">
+    <div class="bar" style="width: <%= number_to_percentage(checked_in.to_f / @classroom.students.count.to_f * 100, :precision => 0) %> ;">
+      Attendance Progress
+      <%= number_to_percentage(checked_in.to_f / @classroom.students.count.to_f * 100, :precision => 0) %>,
+      <%= checked_in %> checked in,
+      <%= not_checked_in %> not checked in
+    </div>
   </div>
 </div>
 
-
-<div class="span7 offset1" >
-  <ul class="unstyled">
-    <% @classroom.attendances.today.reverse.each do |attendance| %>
-        <li>
-          <%= attendance.student.name %>
-          <%= attendance.created_at.to_date %>
-          Present: <%= attendance.present %>
-          Tardy: <%= attendance.tardy  %>
-          Excused: <%= attendance.excused %>
-        </li>
-
+<div id="attendance-report" class="span7 offset1" >
+  <table class="table table-condensed">
+    <caption><h4>Attendance Report</h4></caption>
+    <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Date</th>
+      <th>Present</th>
+      <th>Tardy</th>
+      <th>Excused</th>
+    </tr>
+    </thead>
+    <% @classroom.attendances.today.each do |attendance| %>
+        <tbody>
+        <tr>
+          <td><%= attendance.id %></td>
+          <td><%= attendance.student.name %></td>
+          <td><%= attendance.created_at.to_date %></td>
+          <td><%= attendance.present %></td>
+          <td><%= attendance.tardy %></td>
+          <td><%= attendance.excused %></td>
+        </tr>
+        </tbody>
     <% end %>
-  </ul>
+  </table>
 </div>
+
+
 
