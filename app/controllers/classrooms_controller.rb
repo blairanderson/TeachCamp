@@ -1,5 +1,11 @@
 class ClassroomsController < ApplicationController
 
+  def teacher_class
+    if teacher_signed_in?
+      @classrooms = current_teacher.classrooms
+    end
+  end
+
   # GET /classrooms
   # GET /classrooms.json
   def index
@@ -11,30 +17,19 @@ class ClassroomsController < ApplicationController
     end
   end
 
-  def teacher_class
-    if teacher_signed_in?
-      @classrooms = current_teacher.classrooms
-
-    end
-
-  end
-
   def take_attendance
     @classroom = Classroom.find(params[:id])
-
-
-
   end
 
   def process_attendance
     @classroom = Classroom.find(params[:id])
-        existing = @classroom.attendances.today.where(student_id: params[:student_id])
-        if existing.count > 0
-          #edit their current attendance
-          existing.last.update_attributes present: params[:present], tardy: params[:tardy], excused: params[:excused]
-        else
-          @classroom.attendances.create student_id: params[:student_id], classroom_id: params[:classroom_id], present: params[:present], tardy: params[:tardy], excused: params[:excused]
-        end
+    existing = @classroom.attendances.today.where(student_id: params[:student_id])
+    if existing.count > 0
+      #edit their current attendance
+      existing.last.update_attributes present: params[:present], tardy: params[:tardy], excused: params[:excused]
+    else
+      @classroom.attendances.create student_id: params[:student_id], classroom_id: params[:classroom_id], present: params[:present], tardy: params[:tardy], excused: params[:excused]
+    end
     redirect_to take_attendance_classroom_path
   end
 

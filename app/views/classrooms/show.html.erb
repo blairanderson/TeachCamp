@@ -1,59 +1,52 @@
-<div class="row">
-  <div class="span10">
-    <h1><%= @classroom.name %></h1>
-    <%= link_to 'Edit Classroom', edit_classroom_path(@classroom) %>
-    <h3>
-      <b>Teacher:</b>
+<div class="container">
+  <div class="container">
+    <p class="lead">
+      <%= @classroom.name %>
       <% @classroom.teachers.each do |teacher| %>
-          <%= teacher.email %> <br>
+          by <%= mail_to teacher.email, teacher.full_name  %>
       <% end %>
-    </h3>
-    <h5>Running Date: <%= @classroom.running_date %></h5>
-    <div class="span5">
-      <h4>Class Description:<%= @classroom.description %> </h4>
-    </div>
+      | <small>starting <%= @classroom.running_date.to_date %></small>
+    </p>
 
-    <div class="span5">
-      <h3>Lessons:<%= link_to '(new)', new_classroom_lesson_path(@classroom) %></h3>
-      <ol>
-        <%  @classroom.lessons.each do |lesson| %>
-            <li>
-              <b>
-                <%= link_to lesson.name, classroom_lesson_path(@classroom.id, lesson.id) %>
-              </b>
-              <i>
-                <%= lesson.description %>
-              </i>
-            </li>
-        <% end %>
-      </ol>
-      <div id="disqus_thread">
-        <script type="text/javascript">
-            /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
-            var disqus_shortname = 'teachcamp'; // required: replace example with your forum shortname
 
-            /* * * DON'T EDIT BELOW THIS LINE * * */
-            (function() {
-                var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-                dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
-                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-            })();
-        </script>
-        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-        <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+    <div class="btn-toolbar">
+      <div class="btn-group">
+        <a class="btn" href="<%= edit_classroom_path(@classroom) %>"><i class="icon-pencil"></i> Edit Classroom</a>
+        <a class="btn" data-toggle="collapse" data-target=".lessons-collapse"><i class="icon-th-list"></i> Class Lessons <span class="caret"></span></a>
+        <a class="btn" data-toggle="collapse" data-target=".description-collapse"><i class="icon-search"></i> Class Description <span class="caret"></span></a>
+        <a class="btn" data-toggle="collapse" data-target=".faq-collapse"><i class="icon-question-sign"></i> FAQ: <span class="caret"></span></a>
+
       </div>
     </div>
-    <div class="span4 well">
-      <h4><%= link_to "Take Attendance", take_attendance_classroom_path %></h4>
-      <ul class="unstyled">
-        <% @students.each do |student| %>
-            <li><%= link_to student.name, student_path(student.id), class: "muted" %></li>
-        <% end %>
+    <!-- Responsive Navbar Part 2: Place all navbar contents you want collapsed within .navbar-collapse.collapse. -->
+    <div class="description-collapse collapse">
+      <div class="span5">
+        <dl>
+          <dt>Class Description:</dt>
+          <dd><%= @classroom.description %></dd>
+        </dl>
+      </div>
+    </div>
+    <div class="lessons-collapse collapse">
+      <ul class="nav">
+        <div class="span5">
+          <dl><a class="btn btn-block" href="<%=  new_classroom_lesson_path(@classroom) %>" ><i>new lesson</i></a>
+            <%  @classroom.lessons.each do |lesson| %>
+                <dt>
+                  <%= link_to lesson.name, classroom_lesson_path(@classroom.id, lesson.id) %>
+                </dt>
+                <dd>
+                  <%= lesson.description %>
+                </dd>
+            <% end %>
+          </dl>
+        </div>
       </ul>
     </div>
-    <div class="span4 well">
-      <div id="messages">
-        <h5>FAQ: <%= link_to "new", new_message_path(classroom_id: @classroom.id) %></h5>
+    <div class="faq-collapse collapse">
+      <div id="messages" class="span5">
+        <h5><%= link_to "new", new_message_path(classroom_id: @classroom.id), class: "btn btn-block" %></h5>
         <ul class="unstyled">
           <% @messages.reverse.each do |question| %>
               <li>
@@ -64,5 +57,48 @@
         </ul>
       </div>
     </div>
+
+    <div class="container span4">
+      <h4><%= link_to "Take Attendance", take_attendance_classroom_path %></h4>
+      <ul class="unstyled">
+        <% @students.each do |student| %>
+            <li>
+              <%= link_to student.name, student_path(student.id), class: "muted" %>
+              <span class="pull-right">
+                Unexcused Absences:<%= student.attendances.where(classroom_id: @classroom.id).where(present: false, excused: false).count %>
+              </span>
+            </li>
+        <% end %>
+      </ul>
+    </div>
+
+  </div>
+</div>
+<div class="container">
+  <div id="disqus_thread">
+    <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'teachcamp'; // required: replace example with your forum shortname
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+  </div>
+</div>
+<div class="container">
+  <div class="well">
+    <ol><strong>School/District Requirements</strong>
+      <li>After one unexcused absence in a month, the school is required to inform the parent in writing or by phone.</li>
+      <li>After two unexcused absences, the school is required to initiate a parent conference to improve the student's attendance.</li>
+      <li>After five unexcused absences in a month, the parent and school must enter a contract to improve the student's attendance. Or, the case can be referred to a Community Truancy Board.</li>
+      <li>After seven unexcused absences in a month, or ten unexcused absences in an academic year, the school district may file truancy petitions with the juvenile court.</li>
+      <li>If the student is not in compliance with a court order resulting from a tuition petition, the school is required to file a contempt motion.</li>
+    </ol>
   </div>
 </div>

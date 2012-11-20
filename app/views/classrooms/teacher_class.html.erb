@@ -1,32 +1,34 @@
-<% if teacher_signed_in? %>
-    <h1>Teacher Classrooms</h1>
-    <%= link_to 'New Classroom', new_classroom_path %>
-    <table class="table table-bordered">
-      <tr>
-        <th>Teacher</th>
-        <th>Running date</th>
-        <th>Name</th>
-        <th>Description</th>
-        <th>edit</th>
-        <th>delete</th>
-      </tr>
+<div class="container">
+  <% if teacher_signed_in? %>
+      <h1>Teacher Classrooms</h1>
+      <%= link_to 'New Classroom', new_classroom_path %>
+      <table class="table table-bordered">
+        <tr>
+          <th>Teacher</th>
+          <th>Running date</th>
+          <th>Name</th>
+          <th>Description</th>
+          <th>edit</th>
+          <th>delete</th>
+        </tr>
 
-      <% @classrooms.each do |classroom| %>
-          <tr>
-            <td>
-              <% classroom.teachers.each do |teacher| %>
-                  <%= teacher.email %> <br>
-              <% end %>
-            </td>
-            <td><%= classroom.running_date %></td>
-            <td><%= link_to classroom.name, classroom %></td>
-            <td><%= link_to classroom.description, classroom %></td>
-            <td><%= link_to 'Edit', edit_classroom_path(classroom) %></td>
-            <td><%= link_to 'Destroy', classroom, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-          </tr>
-      <% end %>
-    </table>
-<% else %>
-    <%= render 'home_page_signed_out' %>
-<% end %>
+        <% @classrooms.each do |classroom| %>
+            <tr>
+              <td>
+                <% classroom.teachers.each do |teacher| %>
+                    <%= teacher.email %> <br>
+                <% end %>
+              </td>
+              <td><%= classroom.running_date %></td>
+              <td><%= link_to classroom.name, classroom %></td>
+              <td><%= link_to classroom.description, classroom %></td>
+              <td><%= link_to 'Edit', edit_classroom_path(classroom) %></td>
+              <td><%= link_to 'Destroy', classroom, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            </tr>
+        <% end %>
+      </table>
+  <% else %>
+      <%= render 'home_page_signed_out' %>
+  <% end %>
 
+</div>
