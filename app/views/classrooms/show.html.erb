@@ -1,11 +1,13 @@
 <div class="container">
   <div class="container">
     <p class="lead">
-      <%= @classroom.name %>
+      <%= @classroom.name %> by
       <% @classroom.teachers.each do |teacher| %>
-          by <%= mail_to teacher.email, teacher.full_name  %>
+          <%= mail_to teacher.email, teacher.username  %>
       <% end %>
-      | <small>starting <%= @classroom.running_date.to_date %></small>
+      <% if @classroom.running_date? %>
+       | <small>starting <%= @classroom.running_date.to_date %></small>
+      <% end %>
     </p>
 
 

@@ -2,14 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5f4aa282-cabe-4526-bf01-09d14af4b555" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/development.sqlite3" afterPath="$PROJECT_DIR$/db/development.sqlite3" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/classrooms_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/classrooms_controller.rb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/classrooms/show.html.erb" afterPath="$PROJECT_DIR$/app/views/classrooms/show.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/classrooms/teacher_class.html.erb" afterPath="$PROJECT_DIR$/app/views/classrooms/teacher_class.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/layouts/_navigation_bottom.html.erb" afterPath="$PROJECT_DIR$/app/views/layouts/_navigation_bottom.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/layouts/application.html.erb" afterPath="$PROJECT_DIR$/app/views/layouts/application.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/students/show.html.erb" afterPath="$PROJECT_DIR$/app/views/students/show.html.erb" />
     </list>
     <ignored path="teachcamp.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -116,7 +110,7 @@
       <file leaf-file-name="show.html.erb" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/views/classrooms/show.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="51" column="19" selection-start="2156" selection-end="2156" vertical-scroll-proportion="1.0875202">
+            <state line="5" column="10" selection-start="163" selection-end="163" vertical-scroll-proportion="0.12965964">
               <folding />
             </state>
           </provider>
@@ -761,7 +755,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/classrooms/show.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="51" column="19" selection-start="2156" selection-end="2156" vertical-scroll-proportion="1.0875202">
+        <state line="5" column="10" selection-start="163" selection-end="163" vertical-scroll-proportion="0.12965964">
           <folding />
         </state>
       </provider>
