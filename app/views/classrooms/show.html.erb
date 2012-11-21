@@ -18,7 +18,6 @@
         <a class="btn" data-toggle="collapse" data-target=".lessons-collapse"><i class="icon-th-list"></i> Class Lessons <span class="caret"></span></a>
         <a class="btn" data-toggle="collapse" data-target=".description-collapse"><i class="icon-search"></i> Class Description <span class="caret"></span></a>
         <a class="btn" data-toggle="collapse" data-target=".faq-collapse"><i class="icon-question-sign"></i> FAQ: <span class="caret"></span></a>
-
       </div>
     </div>
     <!-- Responsive Navbar Part 2: Place all navbar contents you want collapsed within .navbar-collapse.collapse. -->
@@ -60,7 +59,7 @@
       </div>
     </div>
 
-    <div class="container span4">
+    <div class="container span5">
       <h4><%= link_to "Take Attendance", take_attendance_classroom_path %></h4>
       <ul class="unstyled">
         <% @students.each do |student| %>
@@ -72,6 +71,19 @@
             </li>
         <% end %>
       </ul>
+    </div>
+    <div class="span5 well">
+      <h4>Notifications to Send!</h4>
+      <ul class="unstyled">
+            <% @students.each do |student| %>
+
+             <li>One Unexcused Absence - Send Letter to Parent</li>
+
+             <% student.attendances.where(classroom_id: @classroom.id).where(present: false, excused: false).count %>
+
+            <%= link_to student.name, student_path(student.id), class: "muted" %>
+            <% end %>
+          </ul>
     </div>
 
   </div>

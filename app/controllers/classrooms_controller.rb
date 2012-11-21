@@ -43,11 +43,22 @@ class ClassroomsController < ApplicationController
     @students = @classroom.students.all
 
 
+
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @classroom }
     end
   end
+
+  def district_requirements
+    @students = Classroom.find(params[:id]).students.all
+    @students.each do |student|
+      if student.attendances.where(classroom_id: @classroom.id).where(present: false, excused: false).count
+      end
+    end
+  end
+
+
 
   # GET /classrooms/new
   # GET /classrooms/new.json

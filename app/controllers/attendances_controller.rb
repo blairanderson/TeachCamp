@@ -71,6 +71,7 @@ class AttendancesController < ApplicationController
     end
   end
 
+
   # DELETE /attendances/1
   # DELETE /attendances/1.json
   def destroy

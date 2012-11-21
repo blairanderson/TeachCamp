@@ -4,13 +4,18 @@
     Student Records for <strong><%= @student.name %></strong> <abbr title="Current Telephone Number">p#:</abbr><%= @student.phone %> <a href="mailto:#"><%= @student.email %></a>
   </p>
 </div>
-<div class="container">
-  <ul class="thumbnails">
-    <% @student.classrooms.each do |classroom| %>
-        <li class="span4 hover">
-          <div class="thumbnail">
-            <h3><%= link_to classroom.name, classroom_path(classroom.id) %></h3>
-            <img src="http://placehold.it/300x100" alt="">
+<div class="accordion" id="accordion2">
+  <% @student.classrooms.each do |classroom| %>
+
+      <div class="accordion-group span5">
+        <div class="accordion-heading">
+          <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapse<%= classroom.id %>">
+            <img class="media-object pull-left" src="http://placehold.it/64x64">
+            <p class="lead"><i class="icon-down-arrow"></i><%= classroom.name %></p>
+          </a>
+        </div>
+        <div id="collapse<%= classroom.id %>" class="accordion-body collapse">
+          <div class="accordion-inner">
             <dl class="dl-horizontal">
               <dt>Present:</dt>
               <dd><%= @student.attendances.where(classroom_id: classroom.id).limit(180).where(present: true, tardy: false).count %></dd>
@@ -22,53 +27,16 @@
               <dd><%= @student.attendances.where(classroom_id: classroom.id).limit(180).where(present: false, excused: false).count %></dd>
             </dl>
 
-            <a class="btn btn-block" data-toggle="collapse" data-target=".<%= classroom.id %>-collapse">Show Attendance Record <i class="icon-list-alt"></i></a>
-            <!-- Responsive Navbar Part 2: Place all navbar contents you want collapsed within .navbar-collapse.collapse. -->
-            <div class="<%= classroom.id %>-collapse collapse">
-              <ul class="nav">
-                <% @student.attendances.where(classroom_id: classroom.id).limit(180).each do |attendance| %>
-                    <li><%= attendance.created_at.to_date %> <%= attendance.present %> <%= attendance.tardy %> <%= attendance.excused %> </li>
-                <% end %>
-              </ul>
-            </div>
-          </div>
-        </li>
-    <% end %>
-  </ul>
-
-  <div class="accordion" id="accordion2">
-    <% @student.classrooms.each do |classroom| %>
-
-        <div class="accordion-group span5">
-          <div class="accordion-heading">
-            <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapse<%= classroom.id %>">
-              <img class="media-object pull-left" src="http://placehold.it/64x64">
-              <h3><%= classroom.name %></h3>
-            </a>
-          </div>
-          <div id="collapse<%= classroom.id %>" class="accordion-body collapse">
-            <div class="accordion-inner">
-              <dl class="dl-horizontal">
-                <dt>Present:</dt>
-                <dd><%= @student.attendances.where(classroom_id: classroom.id).limit(180).where(present: true, tardy: false).count %></dd>
-                <dt>Tardy:</dt>
-                <dd><%= @student.attendances.where(classroom_id: classroom.id).limit(180).where(present: true, tardy: true).count %></dd>
-                <dt>Excused:</dt>
-                <dd><%= @student.attendances.where(classroom_id: classroom.id).limit(180).where(present: false, excused: true).count %></dd>
-                <dt>Absent:</dt>
-                <dd><%= @student.attendances.where(classroom_id: classroom.id).limit(180).where(present: false, excused: false).count %></dd>
-              </dl>
-
-              <img src="http://placehold.it/300x100" alt="">
-              <% @student.attendances.where(classroom_id: classroom.id).limit(180).each do |attendance| %>
-                  <li><%= attendance.created_at.to_date %> <%= attendance.present %> <%= attendance.tardy %> <%= attendance.excused %> </li>
-              <% end %>
-            </div>
+            <img src="http://placehold.it/300x100" alt="">
+            <% @student.attendances.where(classroom_id: classroom.id).limit(180).each do |attendance| %>
+                <li><%= attendance.created_at.to_date %> <%= attendance.present %> <%= attendance.tardy %> <%= attendance.excused %> </li>
+            <% end %>
           </div>
         </div>
+      </div>
 
-    <% end %>
-  </div>
+  <% end %>
+</div>
 
 
 </div>
