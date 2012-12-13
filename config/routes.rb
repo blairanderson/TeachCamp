@@ -4,6 +4,10 @@ Teachcamp::Application.routes.draw do
 
   resources :messages
 
+  resources :pages
+  match "/contact" => "pages#contact"
+  match "/home" => "turds#donkey"
+
   resources :parents
 
   resources :classrooms do

@@ -2,7 +2,6 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.8'
 
-
 gem 'simple_form'
 gem "twitter-bootstrap-rails"
 gem 'bootstrap-sass'
@@ -28,6 +27,7 @@ end
 group :production do
   gem 'pg'
   gem 'thin'
+  gem 'newrelic_rpm'
 end
 
 

@@ -1,34 +1,30 @@
-<% if teacher_signed_in? %>
-    <% else %>
-    <div class="alert alert-error"><p class="lead">Since you're not signed it, this page shows you all the classes currently available.</p>
-      <p>Go ahead and sign in with the username i've passed into the user field. the password is password.</p></div>
+<div class="container">
+  <h1>Listing classrooms</h1>
+  <%= link_to 'New Classroom', new_classroom_path %>
+  <table class="table table-bordered">
+    <tr>
+      <th>Teacher</th>
+      <th>Running date</th>
+      <th>Name</th>
+      <th>Description</th>
+      <th>edit</th>
+      <th>delete</th>
+    </tr>
+
+    <% @classrooms.each do |classroom| %>
+        <tr>
+          <td>
+            <% classroom.teachers.each do |teacher| %>
+                <%= teacher.email %> <br>
+            <% end %>
+          </td>
+
+          <td><%= classroom.running_date %></td>
+          <td><%= link_to classroom.name, classroom %></td>
+          <td><%= link_to classroom.description, classroom %></td>
+          <td><%= link_to 'Edit', edit_classroom_path(classroom) %></td>
+          <td><%= link_to 'Destroy', classroom, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
     <% end %>
-
-<h1>Listing classrooms</h1>
-<%= link_to 'New Classroom', new_classroom_path %>
-<table class="table table-bordered">
-  <tr>
-    <th>Teacher</th>
-    <th>Running date</th>
-    <th>Name</th>
-    <th>Description</th>
-    <th>edit</th>
-    <th>delete</th>
-  </tr>
-
-  <% @classrooms.each do |classroom| %>
-      <tr>
-        <td>
-          <% classroom.teachers.each do |teacher| %>
-              <%= teacher.email %> <br>
-          <% end %>
-        </td>
-
-        <td><%= classroom.running_date %></td>
-        <td><%= link_to classroom.name, classroom %></td>
-        <td><%= link_to classroom.description, classroom %></td>
-        <td><%= link_to 'Edit', edit_classroom_path(classroom) %></td>
-        <td><%= link_to 'Destroy', classroom, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-  <% end %>
-</table>
+  </table>
+</div>
